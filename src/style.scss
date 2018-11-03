@@ -2,6 +2,111 @@
   box-sizing: border-box;
 }
 
+ul {
+  padding: 0;
+}
+
+li {
+  list-style: none;
+  padding: 0;
+}
+
 body {
   margin: 0;
 }
+
+header,
+main {
+  width: 100%;
+  overflow: hidden;
+}
+
+header {
+  display: block;
+  height: 77px;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: calc(100vh - 77px);
+  margin: 0;
+}
+
+//global color classes
+//TODO change colors to less blinding
+.black {
+  background-color: black;
+  background-image: none;
+}
+
+.brown {
+  background-color: brown;
+  background-image: none;
+}
+
+.red {
+  background-color: red;
+  background-image: none;
+}
+
+.orange {
+  background-color: orange;
+  background-image: none;
+}
+
+.yellow {
+  background-color: yellow;
+  background-image: none;
+}
+
+.green {
+  background-color: green;
+  background-image: none;
+}
+
+.blue {
+  background-color: blue;
+  background-image: none;
+}
+
+.violet {
+  background-color: violet;
+  background-image: none;
+}
+
+.grey {
+  background-color: grey;
+  background-image: none;
+}
+
+.white {
+  background-color: white;
+  background-image: none;
+}
+
+.gold {
+  background-color: gold;
+  background-image: none;
+}
+
+.silver {
+  background-color: silver;
+  background-image: none;
+}
+
+//header
+.header-title {
+  display: display;
+  margin: 0;
+  padding: 20px 0;
+  text-align: center;
+}
+
+//main
+@import "./assets/styles/resistor.scss";
+@import "./assets/styles/bands-list.scss";
+@import "./assets/styles/colors-list.scss";

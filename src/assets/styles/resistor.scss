@@ -1,0 +1,98 @@
+.resistor {
+  width: 100%;
+  margin-top: 20px;
+
+  &__container {
+    display: flex;
+    height: 120px;
+    width: 400px;
+    margin: 0 auto;
+    background-image: url('./assets/img/Resistor2.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  %band {
+    width: 24px;
+    position: relative;
+    //background-color: aqua;
+
+    &.none {
+      background-color: none;
+    }
+  }
+
+  &__first-band {
+    @extend %band;
+
+    height: 117px;
+    top: calc(50% - 58px);
+    left: 72px;
+  }
+
+  &__second-band {
+    @extend %band;
+
+    height: 98px;
+    top: calc(50% - 48px);
+    left: 94px;
+  }
+
+  &__third-band {
+    @extend %band;
+
+    height: 98px;
+    top: calc(50% - 48px);
+    left: 103px;
+  }
+
+  &__fourth-band {
+    @extend %band;
+
+    height: 98px;
+    top: calc(50% - 48px);
+    left: 113px;
+  }
+
+  &__fifth-band {
+    @extend %band;
+
+    height: 98px;
+    top: calc(50% - 48px);
+    left: 163px;
+  }
+
+  &__sixth-band {
+    @extend %band;
+
+    height: 117px;
+    top: calc(50% - 58px);
+    left: 186px;
+  }
+
+  &__first-band-marker,
+  &__second-band-marker,
+  &__third-band-marker,
+  &__fourth-band-marker,
+  &__fifth-band-marker,
+  &__sixth-band-marker {
+    display: block;
+    height: 20px;
+    width: 20px;
+    position: relative;
+    top: -17px;
+    left: calc(50% - 10px);
+    opacity: 0;
+    transition: opacity .3s ease, top .3s ease;
+
+    &.show-marker {
+      opacity: 100;
+    }
+  }
+
+  &__result {
+    text-align: center;
+    font-size: 30px;
+  }
+}

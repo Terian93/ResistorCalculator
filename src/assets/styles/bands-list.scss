@@ -1,0 +1,80 @@
+.bands-list {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0 30px;
+
+  &__title {
+    margin: 20px auto 0;
+    text-align: center;
+  }
+
+  %bands-list__element {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 1px solid black;
+    background-position: cover;
+    margin-left: 15px;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &.none {
+      background-color: none;
+      background-image: url('./assets/img/null_color.svg');
+    }
+  }
+
+  &__first-band,
+  &__second-band,
+  &__third-band,
+  &__fourth-band,
+  &__fifth-band,
+  &__sixth-band {
+    @extend %bands-list__element;
+  }
+
+  &__first-band {
+    margin-left: 0 !important;
+  }
+
+  &__first-band-marker,
+  &__second-band-marker,
+  &__third-band-marker,
+  &__fourth-band-marker,
+  &__fifth-band-marker,
+  &__sixth-band-marker {
+    display: block;
+    height: 20px;
+    width: 20px;
+    position: relative;
+    top: -17px;
+    left: calc(50% - 10px);
+    transition: opacity .3s ease, top .3s ease;
+    opacity: 0;
+
+    &.show-marker {
+      opacity: 100;
+    }
+  }
+
+  &__first-band:hover &__first-band-marker,
+  &__second-band:hover &__second-band-marker,
+  &__third-band:hover &__third-band-marker,
+  &__fourth-band:hover &__fourth-band-marker,
+  &__fifth-band:hover &__fifth-band-marker,
+  &__sixth-band:hover &__sixth-band-marker {
+    opacity: 100;
+    top: -25px;
+  }
+
+  &__band-description {
+    display: block;
+    width: 50px;
+    position: relative;
+    bottom: -40px;
+    left: calc(50% - 25px);
+    text-align: center;
+  }
+}

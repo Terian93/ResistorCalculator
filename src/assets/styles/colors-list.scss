@@ -1,0 +1,44 @@
+.colors-list {
+  width: 415px;
+  margin: 0 auto;
+  border-top: 1px solid black;
+  overflow: auto;
+
+  &__element {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: center;
+    margin-top: 10px;
+    border-radius: 35px;
+    padding: 10px 20px;
+  }
+
+  &__element:hover {
+    cursor: pointer;
+    background-color: #ccc;
+  }
+
+  &__color-circle {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+
+    &.white {
+      border: 1px solid black;
+      background-color: white;
+    }
+
+    &.none {
+      border: 1px solid black;
+      background-color: none;
+      background-image: url('./assets/img/null_color.svg');
+    }
+  }
+
+  &__color-name {
+    margin-left: 30px;
+    font-size: 24px;
+    line-height: 50px;
+  }
+}

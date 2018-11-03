@@ -1,0 +1,72 @@
+.bands-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 10px 0 30px;
+}
+
+.bands-list__title {
+  margin: 20px auto 0;
+  text-align: center;
+}
+
+.bands-list .bands-list__first-band, .bands-list .bands-list__second-band, .bands-list .bands-list__third-band, .bands-list .bands-list__fourth-band, .bands-list .bands-list__fifth-band, .bands-list .bands-list__sixth-band {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: 1px solid black;
+  background-position: cover;
+  margin-left: 15px;
+}
+
+.bands-list .bands-list__first-band:hover, .bands-list .bands-list__second-band:hover, .bands-list .bands-list__third-band:hover, .bands-list .bands-list__fourth-band:hover, .bands-list .bands-list__fifth-band:hover, .bands-list .bands-list__sixth-band:hover {
+  cursor: pointer;
+}
+
+.bands-list .none.bands-list__first-band, .bands-list .none.bands-list__second-band, .bands-list .none.bands-list__third-band, .bands-list .none.bands-list__fourth-band, .bands-list .none.bands-list__fifth-band, .bands-list .none.bands-list__sixth-band {
+  background-color: none;
+  background-image: url("./assets/img/null_color.svg");
+}
+
+.bands-list__first-band {
+  margin-left: 0 !important;
+}
+
+.bands-list__first-band-marker, .bands-list__second-band-marker, .bands-list__third-band-marker, .bands-list__fourth-band-marker, .bands-list__fifth-band-marker, .bands-list__sixth-band-marker {
+  display: block;
+  height: 20px;
+  width: 20px;
+  position: relative;
+  top: -17px;
+  left: calc(50% - 10px);
+  -webkit-transition: opacity .3s ease, top .3s ease;
+  transition: opacity .3s ease, top .3s ease;
+  opacity: 0;
+}
+
+.bands-list__first-band-marker.show-marker, .bands-list__second-band-marker.show-marker, .bands-list__third-band-marker.show-marker, .bands-list__fourth-band-marker.show-marker, .bands-list__fifth-band-marker.show-marker, .bands-list__sixth-band-marker.show-marker {
+  opacity: 100;
+}
+
+.bands-list__first-band:hover .bands-list__first-band-marker,
+.bands-list__second-band:hover .bands-list__second-band-marker,
+.bands-list__third-band:hover .bands-list__third-band-marker,
+.bands-list__fourth-band:hover .bands-list__fourth-band-marker,
+.bands-list__fifth-band:hover .bands-list__fifth-band-marker,
+.bands-list__sixth-band:hover .bands-list__sixth-band-marker {
+  opacity: 100;
+  top: -25px;
+}
+
+.bands-list__band-description {
+  display: block;
+  width: 50px;
+  position: relative;
+  bottom: -40px;
+  left: calc(50% - 25px);
+  text-align: center;
+}
+/*# sourceMappingURL=bands-list.css.map */

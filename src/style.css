@@ -3,7 +3,320 @@
           box-sizing: border-box;
 }
 
+ul {
+  padding: 0;
+}
+
+li {
+  list-style: none;
+  padding: 0;
+}
+
 body {
   margin: 0;
+}
+
+header,
+main {
+  width: 100%;
+  overflow: hidden;
+}
+
+header {
+  display: block;
+  height: 77px;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  height: calc(100vh - 77px);
+  margin: 0;
+}
+
+.black {
+  background-color: black;
+  background-image: none;
+}
+
+.brown {
+  background-color: brown;
+  background-image: none;
+}
+
+.red {
+  background-color: red;
+  background-image: none;
+}
+
+.orange {
+  background-color: orange;
+  background-image: none;
+}
+
+.yellow {
+  background-color: yellow;
+  background-image: none;
+}
+
+.green {
+  background-color: green;
+  background-image: none;
+}
+
+.blue {
+  background-color: blue;
+  background-image: none;
+}
+
+.violet {
+  background-color: violet;
+  background-image: none;
+}
+
+.grey {
+  background-color: grey;
+  background-image: none;
+}
+
+.white {
+  background-color: white;
+  background-image: none;
+}
+
+.gold {
+  background-color: gold;
+  background-image: none;
+}
+
+.silver {
+  background-color: silver;
+  background-image: none;
+}
+
+.header-title {
+  display: display;
+  margin: 0;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.resistor {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.resistor__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 120px;
+  width: 400px;
+  margin: 0 auto;
+  background-image: url("./assets/img/Resistor2.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.resistor .resistor__first-band, .resistor .resistor__second-band, .resistor .resistor__third-band, .resistor .resistor__fourth-band, .resistor .resistor__fifth-band, .resistor .resistor__sixth-band {
+  width: 24px;
+  position: relative;
+}
+
+.resistor .none.resistor__first-band, .resistor .none.resistor__second-band, .resistor .none.resistor__third-band, .resistor .none.resistor__fourth-band, .resistor .none.resistor__fifth-band, .resistor .none.resistor__sixth-band {
+  background-color: none;
+}
+
+.resistor__first-band {
+  height: 117px;
+  top: calc(50% - 58px);
+  left: 72px;
+}
+
+.resistor__second-band {
+  height: 98px;
+  top: calc(50% - 48px);
+  left: 94px;
+}
+
+.resistor__third-band {
+  height: 98px;
+  top: calc(50% - 48px);
+  left: 103px;
+}
+
+.resistor__fourth-band {
+  height: 98px;
+  top: calc(50% - 48px);
+  left: 113px;
+}
+
+.resistor__fifth-band {
+  height: 98px;
+  top: calc(50% - 48px);
+  left: 163px;
+}
+
+.resistor__sixth-band {
+  height: 117px;
+  top: calc(50% - 58px);
+  left: 186px;
+}
+
+.resistor__first-band-marker, .resistor__second-band-marker, .resistor__third-band-marker, .resistor__fourth-band-marker, .resistor__fifth-band-marker, .resistor__sixth-band-marker {
+  display: block;
+  height: 20px;
+  width: 20px;
+  position: relative;
+  top: -17px;
+  left: calc(50% - 10px);
+  opacity: 0;
+  -webkit-transition: opacity .3s ease, top .3s ease;
+  transition: opacity .3s ease, top .3s ease;
+}
+
+.resistor__first-band-marker.show-marker, .resistor__second-band-marker.show-marker, .resistor__third-band-marker.show-marker, .resistor__fourth-band-marker.show-marker, .resistor__fifth-band-marker.show-marker, .resistor__sixth-band-marker.show-marker {
+  opacity: 100;
+}
+
+.resistor__result {
+  text-align: center;
+  font-size: 30px;
+}
+
+.bands-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 10px 0 30px;
+}
+
+.bands-list__title {
+  margin: 20px auto 0;
+  text-align: center;
+}
+
+.bands-list .bands-list__first-band, .bands-list .bands-list__second-band, .bands-list .bands-list__third-band, .bands-list .bands-list__fourth-band, .bands-list .bands-list__fifth-band, .bands-list .bands-list__sixth-band {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: 1px solid black;
+  background-position: cover;
+  margin-left: 15px;
+}
+
+.bands-list .bands-list__first-band:hover, .bands-list .bands-list__second-band:hover, .bands-list .bands-list__third-band:hover, .bands-list .bands-list__fourth-band:hover, .bands-list .bands-list__fifth-band:hover, .bands-list .bands-list__sixth-band:hover {
+  cursor: pointer;
+}
+
+.bands-list .none.bands-list__first-band, .bands-list .none.bands-list__second-band, .bands-list .none.bands-list__third-band, .bands-list .none.bands-list__fourth-band, .bands-list .none.bands-list__fifth-band, .bands-list .none.bands-list__sixth-band {
+  background-color: none;
+  background-image: url("./assets/img/null_color.svg");
+}
+
+.bands-list__first-band {
+  margin-left: 0 !important;
+}
+
+.bands-list__first-band-marker, .bands-list__second-band-marker, .bands-list__third-band-marker, .bands-list__fourth-band-marker, .bands-list__fifth-band-marker, .bands-list__sixth-band-marker {
+  display: block;
+  height: 20px;
+  width: 20px;
+  position: relative;
+  top: -17px;
+  left: calc(50% - 10px);
+  -webkit-transition: opacity .3s ease, top .3s ease;
+  transition: opacity .3s ease, top .3s ease;
+  opacity: 0;
+}
+
+.bands-list__first-band-marker.show-marker, .bands-list__second-band-marker.show-marker, .bands-list__third-band-marker.show-marker, .bands-list__fourth-band-marker.show-marker, .bands-list__fifth-band-marker.show-marker, .bands-list__sixth-band-marker.show-marker {
+  opacity: 100;
+}
+
+.bands-list__first-band:hover .bands-list__first-band-marker,
+.bands-list__second-band:hover .bands-list__second-band-marker,
+.bands-list__third-band:hover .bands-list__third-band-marker,
+.bands-list__fourth-band:hover .bands-list__fourth-band-marker,
+.bands-list__fifth-band:hover .bands-list__fifth-band-marker,
+.bands-list__sixth-band:hover .bands-list__sixth-band-marker {
+  opacity: 100;
+  top: -25px;
+}
+
+.bands-list__band-description {
+  display: block;
+  width: 50px;
+  position: relative;
+  bottom: -40px;
+  left: calc(50% - 25px);
+  text-align: center;
+}
+
+.colors-list {
+  width: 415px;
+  margin: 0 auto;
+  border-top: 1px solid black;
+  overflow: auto;
+}
+
+.colors-list__element {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  margin-top: 10px;
+  border-radius: 35px;
+  padding: 10px 20px;
+}
+
+.colors-list__element:hover {
+  cursor: pointer;
+  background-color: #ccc;
+}
+
+.colors-list__color-circle {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+.colors-list__color-circle.white {
+  border: 1px solid black;
+  background-color: white;
+}
+
+.colors-list__color-circle.none {
+  border: 1px solid black;
+  background-color: none;
+  background-image: url("./assets/img/null_color.svg");
+}
+
+.colors-list__color-name {
+  margin-left: 30px;
+  font-size: 24px;
+  line-height: 50px;
 }
 /*# sourceMappingURL=style.css.map */

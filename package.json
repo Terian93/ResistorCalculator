@@ -1,8 +1,8 @@
 {
   "name": "resistor-calculator",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "start": "webpack-dev-server --config ./webpack/webpack.dev.js --open ",
     "test": "jest",
@@ -29,10 +29,13 @@
     "node-sass": "^4.9.4",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
-    "stylelint": "^9.6.0",
+    "stylelint": "^9.7.0",
     "stylelint-config-standard": "^18.2.0",
     "webpack": "^4.22.0",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.9"
+  },
+  "dependencies": {
+    "stylelint-scss": "^3.3.2"
   }
 }
