@@ -16,7 +16,6 @@
   %band {
     width: 24px;
     position: relative;
-    //background-color: aqua;
 
     &.none {
       background-color: none;
@@ -71,12 +70,7 @@
     left: 186px;
   }
 
-  &__first-band-marker,
-  &__second-band-marker,
-  &__third-band-marker,
-  &__fourth-band-marker,
-  &__fifth-band-marker,
-  &__sixth-band-marker {
+  &__band-marker {
     display: block;
     height: 20px;
     width: 20px;
@@ -94,5 +88,55 @@
   &__result {
     text-align: center;
     font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .resistor {
+    margin-top: 0;
+
+    &__container {
+      width: 300px;
+    }
+
+    %band {
+      width: 18px;
+    }
+
+    &__first-band {
+      height: 88px;
+      top: calc(50% - 44px);
+      left: 54px;
+    }
+
+    &__second-band {
+      height: 74px;
+      top: calc(50% - 36px);
+      left: 70px;
+    }
+
+    &__third-band {
+      height: 74px;
+      top: calc(50% - 36px);
+      left: 78px;
+    }
+
+    &__fourth-band {
+      height: 74px;
+      top: calc(50% - 36px);
+      left: 85px;
+    }
+
+    &__fifth-band {
+      height: 74px;
+      top: calc(50% - 36px);
+      left: 122px;
+    }
+
+    &__sixth-band {
+      height: 88px;
+      top: calc(50% - 44px);
+      left: 140px;
+    }
   }
 }

@@ -5,7 +5,8 @@
   <meta name="viewport"
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./src/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
   <title>Document</title>
 </head>
 <body>
@@ -15,35 +16,35 @@
   <main>
     <div class="resistor">
       <div class="resistor__container">
-        <div class="resistor__first-band grey">
-          <img class="resistor__first-band-marker"
+        <div class="resistor__first-band grey" id="first-band">
+          <img class="resistor__band-marker"
             id="foo"
-            src="./assets/img/arrow.svg"
+            src="./src/assets/img/arrow.svg"
             alt="arrow-marker">
         </div>
-        <div class="resistor__second-band red">
-          <img class="resistor__second-band-marker"
-            src="./assets/img/arrow.svg"
+        <div class="resistor__second-band red" id="second-band">
+          <img class="resistor__band-marker"
+            src="./src/assets/img/arrow.svg"
             alt="arrow-marker">
         </div>
-        <div class="resistor__third-band orange">
-          <img class="resistor__third-band-marker show-marker"
-            src="./assets/img/arrow.svg"
+        <div class="resistor__third-band orange" id="third-band">
+          <img class="resistor__band-marker show-marker"
+            src="./src/assets/img/arrow.svg"
             alt="arrow-marker">
         </div>
-        <div class="resistor__fourth-band none">
-          <img class="resistor__fourth-band-marker"
-            src="./assets/img/arrow.svg"
+        <div class="resistor__fourth-band none" id="fourth-band">
+          <img class="resistor__band-marker"
+            src="./src/assets/img/arrow.svg"
             alt="arrow-marker">
         </div>
-        <div class="resistor__fifth-band gold">
-          <img class="resistor__fifth-band-marker"
-            src="./assets/img/arrow.svg"
+        <div class="resistor__fifth-band gold" id="fifth-band">
+          <img class="resistor__band-marker"
+            src="./src/assets/img/arrow.svg"
             alt="arrow-marker">
         </div>
-        <div class="resistor__sixth-band none">
-          <img class="resistor__sixth-band-marker"
-            src="./assets/img/arrow.svg"
+        <div class="resistor__sixth-band none" id="sixth-band">
+          <img class="resistor__band-marker"
+            src="./src/assets/img/arrow.svg"
             alt="arrow-marker">
         </div>
       </div>
@@ -52,40 +53,40 @@
       </div>
     </div>
     <h3 class="bands-list__title">Bands</h3>
-    <ul class="bands-list">
-      <li class="bands-list__first-band grey">
-        <img class="bands-list__first-band-marker"
-            src="./assets/img/arrow.svg"
+    <ul class="bands-list" id="bands-list">
+      <li class="bands-list__band-btn grey" id="first-band-color">
+        <img class="bands-list__band-marker"
+            src="./src/assets/img/arrow.svg"
             alt="arrow-marker">
         <span class="bands-list__band-description">8</span>
       </li>
-      <li class="bands-list__second-band red">
-        <img class="bands-list__second-band-marker"
-            src="./assets/img/arrow.svg"
+      <li class="bands-list__band-btn red" id="second-band-color">
+        <img class="bands-list__band-marker"
+            src="./src/assets/img/arrow.svg"
             alt="arrow-marker">
         <span class="bands-list__band-description">2</span>
       </li>
-      <li class="bands-list__third-band orange">
-        <img class="bands-list__third-band-marker show-marker"
-            src="./assets/img/arrow.svg"
+      <li class="bands-list__band-btn orange" id="third-band-color">
+        <img class="bands-list__band-marker show-marker"
+            src="./src/assets/img/arrow.svg"
             alt="arrow-marker">
         <span class="bands-list__band-description">x1k</span>
       </li>
-      <li class="bands-list__fourth-band none">
-        <img class="bands-list__fourth-band-marker"
-            src="./assets/img/arrow.svg"
+      <li class="bands-list__band-btn none" id="fourth-band-color">
+        <img class="bands-list__band-marker"
+            src="./src/assets/img/arrow.svg"
             alt="arrow-marker">
         <span class="bands-list__band-description"></span>
       </li>
-      <li class="bands-list__fifth-band gold">
-        <img class="bands-list__fifth-band-marker"
-            src="./assets/img/arrow.svg"
+      <li class="bands-list__band-btn gold" id="fifth-band-color">
+        <img class="bands-list__band-marker"
+            src="./src/assets/img/arrow.svg"
             alt="arrow-marker">
         <span class="bands-list__band-description">5%</span>
       </li>
-      <li class="bands-list__sixth-band none">
-        <img class="bands-list__sixth-band-marker"
-            src="./assets/img/arrow.svg"
+      <li class="bands-list__band-btn none" id="sixth-band-color">
+        <img class="bands-list__band-marker"
+            src="./src/assets/img/arrow.svg"
             alt="arrow-marker">
         <span class="bands-list__band-description"></span>
       </li>
@@ -94,6 +95,54 @@
       <li class="colors-list__element">
         <div class="colors-list__color-circle none"></div>
         <span class="colors-list__color-name">none</span>
+      </li>
+      <li class="colors-list__element">
+        <div class="colors-list__color-circle black"></div>
+        <span class="colors-list__color-name">black</span>
+      </li>
+      <li class="colors-list__element">
+        <div class="colors-list__color-circle brown"></div>
+        <span class="colors-list__color-name">brown</span>
+      </li>
+      <li class="colors-list__element">
+        <div class="colors-list__color-circle red"></div>
+        <span class="colors-list__color-name">red</span>
+      </li>
+      <li class="colors-list__element">
+        <div class="colors-list__color-circle orange"></div>
+        <span class="colors-list__color-name">orange</span>
+      </li>
+      <li class="colors-list__element">
+        <div class="colors-list__color-circle yellow"></div>
+        <span class="colors-list__color-name">yellow</span>
+      </li>
+      <li class="colors-list__element">
+        <div class="colors-list__color-circle green"></div>
+        <span class="colors-list__color-name">green</span>
+      </li>
+      <li class="colors-list__element">
+        <div class="colors-list__color-circle blue"></div>
+        <span class="colors-list__color-name">blue</span>
+      </li>
+      <li class="colors-list__element">
+        <div class="colors-list__color-circle violet"></div>
+        <span class="colors-list__color-name">violet</span>
+      </li>
+      <li class="colors-list__element">
+        <div class="colors-list__color-circle grey"></div>
+        <span class="colors-list__color-name">grey</span>
+      </li>
+      <li class="colors-list__element">
+        <div class="colors-list__color-circle white"></div>
+        <span class="colors-list__color-name">white</span>
+      </li>
+      <li class="colors-list__element">
+        <div class="colors-list__color-circle gold"></div>
+        <span class="colors-list__color-name">gold</span>
+      </li>
+      <li class="colors-list__element">
+        <div class="colors-list__color-circle silver"></div>
+        <span class="colors-list__color-name">silver</span>
       </li>
     </ul>
   </main>

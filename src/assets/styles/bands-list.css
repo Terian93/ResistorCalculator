@@ -5,7 +5,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding: 10px 0 30px;
+  margin: 20px 0 30px;
 }
 
 .bands-list__title {
@@ -13,7 +13,7 @@
   text-align: center;
 }
 
-.bands-list .bands-list__first-band, .bands-list .bands-list__second-band, .bands-list .bands-list__third-band, .bands-list .bands-list__fourth-band, .bands-list .bands-list__fifth-band, .bands-list .bands-list__sixth-band {
+.bands-list__band-btn {
   height: 50px;
   width: 50px;
   border-radius: 50%;
@@ -22,20 +22,20 @@
   margin-left: 15px;
 }
 
-.bands-list .bands-list__first-band:hover, .bands-list .bands-list__second-band:hover, .bands-list .bands-list__third-band:hover, .bands-list .bands-list__fourth-band:hover, .bands-list .bands-list__fifth-band:hover, .bands-list .bands-list__sixth-band:hover {
+.bands-list__band-btn:hover {
   cursor: pointer;
 }
 
-.bands-list .none.bands-list__first-band, .bands-list .none.bands-list__second-band, .bands-list .none.bands-list__third-band, .bands-list .none.bands-list__fourth-band, .bands-list .none.bands-list__fifth-band, .bands-list .none.bands-list__sixth-band {
+.bands-list__band-btn.none {
   background-color: none;
   background-image: url("./assets/img/null_color.svg");
 }
 
-.bands-list__first-band {
+.bands-list__band-btn:nth-of-type(1) {
   margin-left: 0 !important;
 }
 
-.bands-list__first-band-marker, .bands-list__second-band-marker, .bands-list__third-band-marker, .bands-list__fourth-band-marker, .bands-list__fifth-band-marker, .bands-list__sixth-band-marker {
+.bands-list__band-marker {
   display: block;
   height: 20px;
   width: 20px;
@@ -47,16 +47,11 @@
   opacity: 0;
 }
 
-.bands-list__first-band-marker.show-marker, .bands-list__second-band-marker.show-marker, .bands-list__third-band-marker.show-marker, .bands-list__fourth-band-marker.show-marker, .bands-list__fifth-band-marker.show-marker, .bands-list__sixth-band-marker.show-marker {
+.bands-list__band-marker.show-marker {
   opacity: 100;
 }
 
-.bands-list__first-band:hover .bands-list__first-band-marker,
-.bands-list__second-band:hover .bands-list__second-band-marker,
-.bands-list__third-band:hover .bands-list__third-band-marker,
-.bands-list__fourth-band:hover .bands-list__fourth-band-marker,
-.bands-list__fifth-band:hover .bands-list__fifth-band-marker,
-.bands-list__sixth-band:hover .bands-list__sixth-band-marker {
+.bands-list__band-btn:hover .bands-list__band-marker {
   opacity: 100;
   top: -25px;
 }
@@ -65,8 +60,36 @@
   display: block;
   width: 50px;
   position: relative;
-  bottom: -40px;
+  bottom: -30px;
   left: calc(50% - 25px);
   text-align: center;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+@media screen and (max-width: 824px) {
+  .bands-list {
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .bands-list {
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    margin: 20px 0 40px;
+  }
+  .bands-list__band-btn {
+    margin: 0;
+  }
+  .bands-list__band-description {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-height: 420px) {
+  .bands-list {
+    height: calc(100vh - (185px + 40px));
+  }
 }
 /*# sourceMappingURL=bands-list.css.map */

@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'Milestone';
+  src: url('./assets/fonts/MilestoneFreeVersion-Script.otf');
+}
+
 * {
   box-sizing: border-box;
 }
@@ -12,6 +17,7 @@ li {
 }
 
 body {
+  height: 100%;
   margin: 0;
 }
 
@@ -26,6 +32,9 @@ header {
   height: 77px;
   margin: 0;
   padding: 0;
+  font-family: 'Milestone', sans-serif;
+  //font-family: 'Oswald', sans-serif;
+  letter-spacing: 1px;
 }
 
 main {
@@ -34,6 +43,7 @@ main {
   justify-content: flex-start;
   height: calc(100vh - 77px);
   margin: 0;
+  font-family: 'Oswald', sans-serif;
 }
 
 //global color classes
@@ -44,7 +54,7 @@ main {
 }
 
 .brown {
-  background-color: brown;
+  background-color: saddlebrown;
   background-image: none;
 }
 
@@ -74,7 +84,7 @@ main {
 }
 
 .violet {
-  background-color: violet;
+  background-color: darkviolet;
   background-image: none;
 }
 
@@ -100,13 +110,49 @@ main {
 
 //header
 .header-title {
-  display: display;
+  height: 100%;
   margin: 0;
   padding: 20px 0;
   text-align: center;
+  font-size: 55px;
+  font-weight: 400;
 }
 
 //main
 @import "./assets/styles/resistor.scss";
 @import "./assets/styles/bands-list.scss";
 @import "./assets/styles/colors-list.scss";
+
+@media screen and (max-width: 760px) {
+  header {
+    height: 40px;
+  }
+
+  main {
+    height: calc(100vh - 40px);
+  }
+
+  .header-title {
+    padding: 4px 0;
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-height: 420px) {
+  body {
+    height: auto;
+  }
+
+  header {
+    height: 40px;
+  }
+
+  main {
+    height: auto;
+  }
+
+  .header-title {
+    padding: 4px 0;
+    font-size: 30px;
+  }
+}
