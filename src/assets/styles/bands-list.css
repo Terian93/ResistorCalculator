@@ -67,9 +67,12 @@
           backface-visibility: hidden;
 }
 
-@media screen and (max-width: 824px) {
+@media screen and (max-width: 760px) {
   .bands-list {
     height: auto;
+  }
+  .bands-list__title {
+    margin-top: 5px;
   }
 }
 
@@ -84,12 +87,6 @@
   }
   .bands-list__band-description {
     font-size: 20px;
-  }
-}
-
-@media screen and (max-height: 420px) {
-  .bands-list {
-    height: calc(100vh - (185px + 40px));
   }
 }
 /*# sourceMappingURL=bands-list.css.map */

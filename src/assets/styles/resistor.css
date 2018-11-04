@@ -61,7 +61,7 @@
   left: 186px;
 }
 
-.resistor__first-band-marker, .resistor__second-band-marker, .resistor__third-band-marker, .resistor__fourth-band-marker, .resistor__fifth-band-marker, .resistor__sixth-band-marker {
+.resistor__band-marker {
   display: block;
   height: 20px;
   width: 20px;
@@ -73,7 +73,7 @@
   transition: opacity .3s ease, top .3s ease;
 }
 
-.resistor__first-band-marker.show-marker, .resistor__second-band-marker.show-marker, .resistor__third-band-marker.show-marker, .resistor__fourth-band-marker.show-marker, .resistor__fifth-band-marker.show-marker, .resistor__sixth-band-marker.show-marker {
+.resistor__band-marker.show-marker {
   opacity: 100;
 }
 
@@ -83,42 +83,44 @@
 }
 
 @media screen and (max-width: 400px) {
+  .resistor {
+    margin-top: 0;
+  }
   .resistor__container {
     width: 300px;
   }
   .resistor .resistor__first-band, .resistor .resistor__second-band, .resistor .resistor__third-band, .resistor .resistor__fourth-band, .resistor .resistor__fifth-band, .resistor .resistor__sixth-band {
     width: 18px;
-    background-color: red !important;
   }
   .resistor__first-band {
     height: 88px;
     top: calc(50% - 44px);
-    left: 52px;
+    left: 54px;
   }
   .resistor__second-band {
-    height: 98px;
-    top: calc(50% - 48px);
-    left: 94px;
+    height: 74px;
+    top: calc(50% - 36px);
+    left: 70px;
   }
   .resistor__third-band {
-    height: 98px;
-    top: calc(50% - 48px);
-    left: 103px;
+    height: 74px;
+    top: calc(50% - 36px);
+    left: 78px;
   }
   .resistor__fourth-band {
-    height: 98px;
-    top: calc(50% - 48px);
-    left: 113px;
+    height: 74px;
+    top: calc(50% - 36px);
+    left: 85px;
   }
   .resistor__fifth-band {
-    height: 98px;
-    top: calc(50% - 48px);
-    left: 163px;
+    height: 74px;
+    top: calc(50% - 36px);
+    left: 122px;
   }
   .resistor__sixth-band {
-    height: 117px;
-    top: calc(50% - 58px);
-    left: 186px;
+    height: 88px;
+    top: calc(50% - 44px);
+    left: 140px;
   }
 }
 /*# sourceMappingURL=resistor.css.map */

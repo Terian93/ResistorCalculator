@@ -7,11 +7,11 @@
 
   &__element {
     display: grid;
-    grid-template-columns: 50px auto 80px;
+    grid-template-columns: 50px auto 100px;
     grid-template-rows: 50px;
     align-content: center;
     border-radius: 35px;
-    padding: 10px 20px;
+    padding: 10px 10px 10px 20px;
   }
 
   &__element:hover {
@@ -38,7 +38,6 @@
 
   &__color-name,
   &__color-description {
-    margin-left: 30px;
     font-size: 24px;
     line-height: 50px;
   }
@@ -56,7 +55,6 @@
   .colors-list {
     height: auto;
     width: 100%;
-    margin: 0 0 5px;
 
     &__element {
       padding: 2px 20px;

@@ -9,20 +9,16 @@
 }
 
 .colors-list__element {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 50px auto 100px;
+      grid-template-columns: 50px auto 100px;
+  -ms-grid-rows: 50px;
+      grid-template-rows: 50px;
   -ms-flex-line-pack: center;
       align-content: center;
   border-radius: 35px;
-  padding: 10px 20px;
+  padding: 10px 10px 10px 20px;
 }
 
 .colors-list__element:hover {
@@ -48,16 +44,22 @@
 }
 
 .colors-list__color-name, .colors-list__color-description {
-  margin-left: 30px;
   font-size: 24px;
   line-height: 50px;
+}
+
+.colors-list__color-name {
+  text-align: center;
+}
+
+.colors-list__color-description {
+  text-align: right;
 }
 
 @media screen and (max-width: 760px) {
   .colors-list {
     height: auto;
     width: 100%;
-    margin: 0 0 5px;
   }
   .colors-list__element {
     padding: 2px 20px;

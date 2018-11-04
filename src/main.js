@@ -11,7 +11,7 @@ const $sixthBand = document.getElementById('sixth-band');
 
 let selectedBandNumber = 0;
 let $bandMarker;
-let $bandDescriprion;
+//let $bandDescriprion;
 
 export const selectBandNumberById = id => {
   const bandsList = document.getElementsByClassName('resistor__band-marker');
@@ -65,7 +65,7 @@ window.onload = () => {
     const isBandBtn = target.classList.contains('bands-list__band-btn');
     if (isBandBtn) {
       $bandMarker = target.childNodes[1];
-      $bandDescriprion = target.childNodes[3];
+      //$bandDescriprion = target.childNodes[3];
       const bandColorMarkersList = document.getElementsByClassName('bands-list__band-marker');
       Array.prototype.forEach.call(bandColorMarkersList, element => {
         element.className = 'bands-list__band-marker';
