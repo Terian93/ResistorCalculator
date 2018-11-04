@@ -6,9 +6,9 @@
   overflow: auto;
 
   &__element {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
+    display: grid;
+    grid-template-columns: 50px auto 80px;
+    grid-template-rows: 50px;
     align-content: center;
     border-radius: 35px;
     padding: 10px 20px;
@@ -36,10 +36,19 @@
     }
   }
 
-  &__color-name {
+  &__color-name,
+  &__color-description {
     margin-left: 30px;
     font-size: 24px;
     line-height: 50px;
+  }
+
+  &__color-name {
+    text-align: center;
+  }
+
+  &__color-description {
+    text-align: right;
   }
 }
 

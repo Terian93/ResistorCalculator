@@ -1,6 +1,6 @@
 {
   "name": "resistor-calculator",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "",
   "main": "main.js",
   "scripts": {
@@ -19,6 +19,10 @@
   "author": "Vitaliy Vanchak",
   "license": "ISC",
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-jest": "^23.6.0",
+    "babel-preset-env": "^1.7.0",
     "css-loader": "^1.0.0",
     "eslint": "^5.6.1",
     "eslint-plugin-jest": "^21.25.1",
@@ -27,6 +31,7 @@
     "husky": "^1.1.2",
     "jest": "^23.6.0",
     "node-sass": "^4.9.4",
+    "regenerator-runtime": "^0.12.1",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "stylelint": "^9.7.0",
@@ -37,5 +42,18 @@
   },
   "dependencies": {
     "stylelint-scss": "^3.3.2"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    },
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ]
   }
 }
