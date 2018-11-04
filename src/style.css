@@ -360,7 +360,7 @@ main {
   -ms-flex-line-pack: center;
       align-content: center;
   border-radius: 35px;
-  padding: 10px 10px 10px 20px;
+  padding: 10px 20px;
 }
 
 .colors-list__element:hover {
@@ -404,7 +404,7 @@ main {
     width: 100%;
   }
   .colors-list__element {
-    padding: 2px 20px;
+    padding: 2px 10px;
   }
 }
 
