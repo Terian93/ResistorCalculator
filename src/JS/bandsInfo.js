@@ -47,7 +47,7 @@ export const bandsInfo = [
       {color: 'blue', description: '6'},
       {color: 'violet', description: '7'},
       {color: 'grey', description: '8'},
-      {color: 'white', description: '9'}
+      {color: 'white', description: '9'},
     ]
   },
   {
