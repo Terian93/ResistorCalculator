@@ -15,7 +15,13 @@ let $markedBandColor;
 let $bandColorMarker;
 let $bandColorDescriprion;
 
-export const selectBandNumberById = id => {
+export const selectBandById = id => {
+  const bandColorMarkersList = document.getElementsByClassName('bands-list__band-marker');
+  Array.prototype.forEach.call(bandColorMarkersList, element => {
+    element.className = 'bands-list__band-marker';
+  });
+  $bandColorMarker.className = 'bands-list__band-marker show-marker';
+  
   const bandsList = document.getElementsByClassName('resistor__band-marker');
   Array.prototype.forEach.call(bandsList, element => {
     element.className = 'resistor__band-marker';
@@ -138,12 +144,7 @@ window.onload = () => {
       $markedBandColor = target;
       $bandColorMarker = $markedBandColor.childNodes[1];
       $bandColorDescriprion = $markedBandColor.childNodes[3];
-      const bandColorMarkersList = document.getElementsByClassName('bands-list__band-marker');
-      Array.prototype.forEach.call(bandColorMarkersList, element => {
-        element.className = 'bands-list__band-marker';
-      });
-      $bandColorMarker.className = 'bands-list__band-marker show-marker';
-      selectedBandNumber = selectBandNumberById(target.id);
+      selectedBandNumber = selectBandById(target.id);
       colorsListRemoveChilds($colorsList);
       const bandInfoIndex = $fourthBand.classList.contains('none') && selectedBandNumber === 2 ?
         3 : selectedBandNumber;
