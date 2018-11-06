@@ -55,18 +55,18 @@ export const bandsInfo = [
     description: '',
     colorsList: [
       {color: 'none', description: ''},
-      {color: 'black', description: 'x1'},
-      {color: 'brown', description: 'x10'},
-      {color: 'red', description: 'x100'},
-      {color: 'orange', description: 'x1K'},
-      {color: 'yellow', description: 'x10K'},
-      {color: 'green', description: 'x100K'},
-      {color: 'blue', description: 'x1M'},
-      {color: 'violet', description: 'x10M'},
-      {color: 'grey', description: 'x100M'},
-      {color: 'white', description: 'x1G'},
-      {color: 'gold', description: 'x0.1'},
-      {color: 'silver', description: 'x0.01'}
+      {color: 'black', description: 'x 1'},
+      {color: 'brown', description: 'x 10'},
+      {color: 'red', description: 'x 100'},
+      {color: 'orange', description: 'x 1 K'},
+      {color: 'yellow', description: 'x 10 K'},
+      {color: 'green', description: 'x 100 K'},
+      {color: 'blue', description: 'x1 M'},
+      {color: 'violet', description: 'x 10 M'},
+      {color: 'grey', description: 'x 100 M'},
+      {color: 'white', description: 'x 1 G'},
+      {color: 'gold', description: 'x 0.1'},
+      {color: 'silver', description: 'x 0.01'}
     ]
   },
   {

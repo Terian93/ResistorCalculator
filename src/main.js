@@ -68,7 +68,7 @@ export const createColorElement = (color, description) => {
   $li.innerHTML = `
     <div class="colors-list__color-circle ${color}"></div>
     <span class="colors-list__color-name">${color}</span>
-    <span class="colors-list__color-description">${description}</span>
+    <span class="colors-list__color-description">${description.replace(/ /g, '')}</span>
   `;
   return $li;
 };
@@ -94,17 +94,60 @@ export const changeBandColor = ($element, color) => {
   $element.classList.add(color);
 };
 
+export const generateResult = info => {
+  let bandNumber = 1;
+
+  const result = info.reduce( (accumulator ,element) => {
+    if ( bandNumber > 5 ) {
+      throw 'generateResult() went out of bands limit: bandInfo has more than 6 band objects';
+    }
+    if (bandNumber === 1) {
+      accumulator = info[0].description;
+    }
+    console.log(`${bandNumber}#`);
+    console.log(accumulator);
+    console.log(element);
+
+
+    if (info[3].color === 'none' && bandNumber === 2) {
+      if (element.description === ''){
+        return accumulator;
+      }
+      const descriptionSplited = element.description.split(' ');
+      //TODO parse accumulator to int
+      return descriptionSplited === 3 ?
+        accumulator * descriptionSplited[1] + descriptionSplited[2] :
+        accumulator * descriptionSplited[1];
+    }
+
+    if (element.color !== 'none' && bandNumber === 3) {
+      const descriptionSplited = element.description.split(' ');
+      return descriptionSplited === 3 ?
+        accumulator * descriptionSplited[1] + descriptionSplited[2] :
+        accumulator * descriptionSplited[1];
+    }
+
+    bandNumber++;
+    return accumulator + element.description;
+  });
+
+  console.log(result);
+  return result;
+
+};
+
+
 //TODO check if that function can be restructurized or breaked more into small functions
 const changeColorsList = bandInfo => {
   bandInfo.colorsList.forEach( element => {
     const $el = createColorElement(element.color, element.description);
     $colorsList.appendChild($el);
     const $colorBtn = document.getElementById(`color-${element.color}`);
-    
+
     $colorBtn.onclick = () => {
       changeBandColor($markedBandColor, element.color);
       changeBandColor($markedBand, element.color);
-
+      document.getElementById('result').innerHTML = generateResult(bandsInfo);
       if ( $markedBandColor.id === 'fourth-band-color' ) {
         const $thirdBandColor = document.getElementById('third-band-color');
         const color = $thirdBandColor.classList.item(1);
@@ -127,8 +170,8 @@ const changeColorsList = bandInfo => {
           $thirdBandColor.childNodes[3].innerHTML = bandColorInfo.description;
           bandsInfo[2].description = bandColorInfo.description;
         }
-      } 
-      $bandColorDescriprion.innerHTML = element.description;
+      }
+      $bandColorDescriprion.innerHTML = element.description.replace(/ /g, '');
       bandsInfo[selectedBandNumber].color = element.color;
       bandsInfo[selectedBandNumber].description = element.description;
     };
