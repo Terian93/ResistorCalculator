@@ -104,34 +104,36 @@ export const generateResult = info => {
     if (bandNumber === 1) {
       accumulator = info[0].description;
     }
-    console.log(`${bandNumber}#`);
-    console.log(accumulator);
-    console.log(element);
-
 
     if (info[3].color === 'none' && bandNumber === 2) {
       if (element.description === ''){
+        bandNumber++;
         return accumulator;
       }
       const descriptionSplited = element.description.split(' ');
-      //TODO parse accumulator to int
-      return descriptionSplited === 3 ?
-        accumulator * descriptionSplited[1] + descriptionSplited[2] :
-        accumulator * descriptionSplited[1];
+      bandNumber++;
+      const digitNumber = Number(accumulator);
+      const multiplier = parseFloat(descriptionSplited[1]) * 100;
+      const fullNumber = (digitNumber * multiplier / 100 ).toString();
+      return descriptionSplited.length === 3 ? 
+        fullNumber + descriptionSplited[2] + '&#x2126' : 
+        fullNumber + '&#x2126';
     }
 
     if (element.color !== 'none' && bandNumber === 3) {
       const descriptionSplited = element.description.split(' ');
-      return descriptionSplited === 3 ?
-        accumulator * descriptionSplited[1] + descriptionSplited[2] :
-        accumulator * descriptionSplited[1];
+      bandNumber++;
+      const digitNumber = Number(accumulator);
+      const multiplier = parseFloat(descriptionSplited[1]) * 100;
+      const fullNumber = (digitNumber * multiplier / 100 ).toString();
+      return descriptionSplited.length === 3 ? 
+        fullNumber + descriptionSplited[2] + '&#x2126' : 
+        fullNumber + '&#x2126';
     }
 
     bandNumber++;
     return accumulator + element.description;
   });
-
-  console.log(result);
   return result;
 
 };
@@ -147,7 +149,6 @@ const changeColorsList = bandInfo => {
     $colorBtn.onclick = () => {
       changeBandColor($markedBandColor, element.color);
       changeBandColor($markedBand, element.color);
-      document.getElementById('result').innerHTML = generateResult(bandsInfo);
       if ( $markedBandColor.id === 'fourth-band-color' ) {
         const $thirdBandColor = document.getElementById('third-band-color');
         const color = $thirdBandColor.classList.item(1);
@@ -174,6 +175,7 @@ const changeColorsList = bandInfo => {
       $bandColorDescriprion.innerHTML = element.description.replace(/ /g, '');
       bandsInfo[selectedBandNumber].color = element.color;
       bandsInfo[selectedBandNumber].description = element.description;
+      document.getElementById('result').innerHTML = generateResult(bandsInfo);
     };
   });
 };
