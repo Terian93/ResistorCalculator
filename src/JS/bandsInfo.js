@@ -1,3 +1,4 @@
+export const result = {value: '82k&#x2126 5%'};
 export const currentBandsInfo = [
   { bandNumber: 1, color: 'grey', description: '8'},
   { bandNumber: 2, color: 'red', description: '2',},

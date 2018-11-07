@@ -1,7 +1,7 @@
-import {currentBandsInfo, bandsConstInfoList} from './JS/bandsInfo';
+import {currentBandsInfo, bandsConstInfoList, result} from './JS/bandsInfo';
 import { isNumber, isString } from 'util';
 
-let selectedBandNumber = 2;
+let selectedBandNumber = 1;
 
 const $resultField = document.getElementById('result');
 const $bandsList = document.getElementById('bands-list');
@@ -95,11 +95,12 @@ export const moveMarker = ($marker, className) => {
     throw 'Unknown class name passed as parametr "className"';
   }
 };
-/*
-const saveToLocalHost = () => {
 
+export const saveToLocalHost = () => {
+  localStorage.setItem('currentBandsInfo', JSON.stringify(currentBandsInfo));
+  localStorage.setItem('result', result.value);
 };
-*/
+
 export const getResult = () => {
 
   const result = currentBandsInfo.reduce( (accumulator, bandInfo) => {
@@ -132,7 +133,7 @@ export const getResult = () => {
 
 };
 
-export const changeUI = (action, bandNumber = selectedBandNumber) => {
+export const changeUI = (action, bandNumber = selectedBandNumber, toBuildResult = true) => {
   if ( !isNumber(bandNumber) && bandNumber > 6 ) {
     throw ' "selectedNumber" has wrong value! ';
   }
@@ -156,16 +157,31 @@ export const changeUI = (action, bandNumber = selectedBandNumber) => {
     changeColor($resistorBand, newColor);
     changeColor($bandsListElement, newColor);
     $bandsListElementDescription.innerHTML = newDescription.replace(/ /g, '');
-    $resultField.innerHTML = getResult();
+    if (toBuildResult){
+      result.value = getResult();
+      $resultField.innerHTML = result.value;
+      saveToLocalHost();
+    }
   } else if (action === 'initialize') {
-    //console.log('initialize');
+    const newBandsInfo = JSON.parse(localStorage.getItem('currentBandsInfo'));
+    result.value = localStorage.getItem('result');
+    newBandsInfo.forEach( bandInfo => {
+      const bandNumber = bandInfo.bandNumber;
+      const newColor = bandInfo.color;
+      const newDescription = bandInfo.description;
+
+      currentBandsInfo[bandNumber - 1].color = newColor;
+      currentBandsInfo[bandNumber - 1].description = newDescription;
+      changeUI('change band color', bandNumber, false);
+    });
+    $resultField.innerHTML = result.value;
+    changeUI('change colors-list', 1);
   } else {
     throw 'Unknown action entered';
   }
 };
 
-//Temporary initialize TODO create init() with localstorage usage
-changeUI('change colors-list', 1);
+changeUI('initialize');
 
 window.onload = () => {
   $bandsList.onclick = event => {
