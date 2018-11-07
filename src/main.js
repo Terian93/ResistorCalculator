@@ -11,7 +11,7 @@ export const clearColorsList = () => {
   let check = 0;
   while ($colorsList.firstChild) {
     check++;
-    $colorsList.firstChild.onclick = null;
+    $colorsList.firstChild.removeEventListener('click', colorClickEvent.bind());
     $colorsList.removeChild($colorsList.firstChild);
     if (check > 13) {
       throw '"while" loop gone out of color number limit';
@@ -32,6 +32,29 @@ export const createColorElement = (color, description) => {
   return $li;
 };
 
+const colorClickEvent = colorElementObj => {
+  const currentColor = currentBandsInfo[selectedBandNumber - 1].color;
+  const newColor = colorElementObj.color;
+  if (currentColor !== newColor) {
+    const newDescription = colorElementObj.description;
+    currentBandsInfo[selectedBandNumber - 1].color = newColor;
+    currentBandsInfo[selectedBandNumber - 1].description = newDescription;
+
+    if ( selectedBandNumber === 4 && currentColor === 'none'){
+      const thirdBandNumber = 3;
+      currentBandsInfo[thirdBandNumber - 1].color = 'black';
+      currentBandsInfo[thirdBandNumber - 1].description = '0';
+      changeUI('change band color', thirdBandNumber);
+    } else if (  selectedBandNumber === 4 && newColor === 'none' ) {
+      const thirdBandNumber = 3;
+      currentBandsInfo[thirdBandNumber - 1].color = 'black';
+      currentBandsInfo[thirdBandNumber - 1].description = 'x 1';
+      changeUI('change band color', thirdBandNumber);
+    }
+    changeUI('change band color');
+  }
+};
+
 //can be divided to functions
 const addColorsToList = () => {
   const fourthNumberColor = currentBandsInfo[3].color;
@@ -45,33 +68,18 @@ const addColorsToList = () => {
   if ( selectedBandNumber === 3 && numberOfList === 4) {
     bandConstInfo.colorsList.shift();
   }
+  
+  if ( selectedBandNumber === 6 && fourthNumberColor === 'none') {
+    bandConstInfo.colorsList = bandConstInfo.colorsList.filter(
+      colorObject => colorObject.color === 'none');
+  }
 
   bandConstInfo.colorsList.forEach( colorElementObj => {
     const $colorElement = createColorElement(colorElementObj.color, colorElementObj.description);
     $colorsList.appendChild($colorElement);
     const $colorBtn = document.getElementById(`color-${colorElementObj.color}`);
-    $colorBtn.onclick = () => {
-      const currentColor = currentBandsInfo[selectedBandNumber - 1].color;
-      const newColor = colorElementObj.color;
-      if (currentColor !== newColor) {
-        const newDescription = colorElementObj.description;
-        currentBandsInfo[selectedBandNumber - 1].color = newColor;
-        currentBandsInfo[selectedBandNumber - 1].description = newDescription;
-
-        if ( selectedBandNumber === 4 && currentColor === 'none'){
-          const thirdBandNumber = 3;
-          currentBandsInfo[thirdBandNumber - 1].color = 'black';
-          currentBandsInfo[thirdBandNumber - 1].description = '0';
-          changeUI('change band color', thirdBandNumber);
-        } else if (  selectedBandNumber === 4 && newColor === 'none' ) {
-          const thirdBandNumber = 3;
-          currentBandsInfo[thirdBandNumber - 1].color = 'black';
-          currentBandsInfo[thirdBandNumber - 1].description = 'x 1';
-          changeUI('change band color', thirdBandNumber);
-        }
-        changeUI('change band color');
-      }
-    };
+    $colorBtn.addEventListener('click', colorClickEvent.bind(event, colorElementObj));
+    
   });
 };
 
@@ -184,7 +192,7 @@ export const changeUI = (action, bandNumber = selectedBandNumber, toBuildResult 
 changeUI('initialize');
 
 window.onload = () => {
-  $bandsList.onclick = event => {
+  $bandsList.addEventListener('click', event => {
     const {target} = event;
     const isBandBtn = target.classList.contains('bands-list__band-btn');
     if (isBandBtn) {
@@ -196,5 +204,5 @@ window.onload = () => {
         changeUI('change colors-list');
       }
     }
-  };
+  });
 };
