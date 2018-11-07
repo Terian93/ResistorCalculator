@@ -21,7 +21,7 @@ export const selectBandById = id => {
     element.className = 'bands-list__band-marker';
   });
   $bandColorMarker.className = 'bands-list__band-marker show-marker';
-  
+
   const bandsList = document.getElementsByClassName('resistor__band-marker');
   Array.prototype.forEach.call(bandsList, element => {
     element.className = 'resistor__band-marker';
@@ -115,8 +115,8 @@ export const generateResult = info => {
       const digitNumber = Number(accumulator);
       const multiplier = parseFloat(descriptionSplited[1]) * 100;
       const fullNumber = (digitNumber * multiplier / 100 ).toString();
-      return descriptionSplited.length === 3 ? 
-        fullNumber + descriptionSplited[2] + '&#x2126' : 
+      return descriptionSplited.length === 3 ?
+        fullNumber + descriptionSplited[2] + '&#x2126' :
         fullNumber + '&#x2126';
     }
 
@@ -126,8 +126,8 @@ export const generateResult = info => {
       const digitNumber = Number(accumulator);
       const multiplier = parseFloat(descriptionSplited[1]) * 100;
       const fullNumber = (digitNumber * multiplier / 100 ).toString();
-      return descriptionSplited.length === 3 ? 
-        fullNumber + descriptionSplited[2] + '&#x2126' : 
+      return descriptionSplited.length === 3 ?
+        fullNumber + descriptionSplited[2] + '&#x2126' :
         fullNumber + '&#x2126';
     }
 
@@ -153,15 +153,18 @@ const changeColorsList = bandInfo => {
         const $thirdBandColor = document.getElementById('third-band-color');
         const color = $thirdBandColor.classList.item(1);
         if (element.color === 'none') {
+          //TODO specify what is object
           const bandColorInfo = bandsInfo[3].colorsList.find( object => {
             return object.color === color;
           });
           $thirdBandColor.childNodes[3].innerHTML = bandColorInfo.description;
+          //toDO set bandsInfo[2] as const for readability
           bandsInfo[2].description = bandColorInfo.description;
         } else {
           let bandColorInfo = bandsInfo[2].colorsList.find( object => {
             return object.color === color;
           });
+          //??? why undefined
           if (typeof bandColorInfo === 'undefined') {
             bandColorInfo = {color: 'black', description: '0'};
             changeBandColor($thirdBand, bandColorInfo.color);

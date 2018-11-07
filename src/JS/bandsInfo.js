@@ -3,7 +3,6 @@ export const bandsInfo = [
     color: 'grey',
     description: '8',
     colorsList: [
-      {color: 'none', description: ''},
       {color: 'black', description: '0'},
       {color: 'brown', description: '1'},
       {color: 'red', description: '2'},
@@ -20,7 +19,6 @@ export const bandsInfo = [
     color: 'red',
     description: '2',
     colorsList: [
-      {color: 'none', description: ''},
       {color: 'black', description: '0'},
       {color: 'brown', description: '1'},
       {color: 'red', description: '2'},
@@ -37,7 +35,6 @@ export const bandsInfo = [
     color: 'orange',
     description: 'x 1 k',
     colorsList: [
-      {color: 'none', description: ''},
       {color: 'black', description: '0'},
       {color: 'brown', description: '1'},
       {color: 'red', description: '2'},
