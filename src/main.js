@@ -1,5 +1,6 @@
 import {currentBandsInfo, bandsConstInfoList, result} from './JS/bandsInfo';
 import { isNumber, isString } from 'util';
+import { isNull } from 'util';
 
 let selectedBandNumber = 1;
 
@@ -57,8 +58,9 @@ const colorClickEvent = colorElementObj => {
 
 //can be divided to functions
 const addColorsToList = () => {
-  const fourthNumberColor = currentBandsInfo[3].color;
-  const numberOfList = selectedBandNumber === 3 && fourthNumberColor === 'none' ?
+  const fourthBandColor = currentBandsInfo[3].color;
+  const fifthBandColor = currentBandsInfo[4].color;
+  const numberOfList = selectedBandNumber === 3 && fourthBandColor === 'none' ?
     4 : selectedBandNumber;
   const bandConstInfo = JSON.parse(JSON.stringify(bandsConstInfoList[numberOfList - 1]));
   /*
@@ -68,8 +70,8 @@ const addColorsToList = () => {
   if ( selectedBandNumber === 3 && numberOfList === 4) {
     bandConstInfo.colorsList.shift();
   }
-  
-  if ( selectedBandNumber === 6 && fourthNumberColor === 'none') {
+
+  if ( selectedBandNumber === 6 && (fourthBandColor === 'none' || fifthBandColor === 'none')) {
     bandConstInfo.colorsList = bandConstInfo.colorsList.filter(
       colorObject => colorObject.color === 'none');
   }
@@ -79,7 +81,7 @@ const addColorsToList = () => {
     $colorsList.appendChild($colorElement);
     const $colorBtn = document.getElementById(`color-${colorElementObj.color}`);
     $colorBtn.addEventListener('click', colorClickEvent.bind(event, colorElementObj));
-    
+
   });
 };
 
@@ -172,16 +174,18 @@ export const changeUI = (action, bandNumber = selectedBandNumber, toBuildResult 
     }
   } else if (action === 'initialize') {
     const newBandsInfo = JSON.parse(localStorage.getItem('currentBandsInfo'));
-    result.value = localStorage.getItem('result');
-    newBandsInfo.forEach( bandInfo => {
-      const bandNumber = bandInfo.bandNumber;
-      const newColor = bandInfo.color;
-      const newDescription = bandInfo.description;
+    if (!isNull(newBandsInfo)) {
+      result.value = localStorage.getItem('result');
+      newBandsInfo.forEach( bandInfo => {
+        const bandNumber = bandInfo.bandNumber;
+        const newColor = bandInfo.color;
+        const newDescription = bandInfo.description;
 
-      currentBandsInfo[bandNumber - 1].color = newColor;
-      currentBandsInfo[bandNumber - 1].description = newDescription;
-      changeUI('change band color', bandNumber, false);
-    });
+        currentBandsInfo[bandNumber - 1].color = newColor;
+        currentBandsInfo[bandNumber - 1].description = newDescription;
+        changeUI('change band color', bandNumber, false);
+      });
+    }
     $resultField.innerHTML = result.value;
     changeUI('change colors-list', 1);
   } else {
