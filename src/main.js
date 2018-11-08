@@ -2,6 +2,7 @@ import {currentBandsInfo, bandsConstInfoList, result} from './JS/bandsInfo';
 import { isNumber, isString } from 'util';
 import { isNull } from 'util';
 
+//Use number 1-6 or decremented for arrays 0-5?
 let selectedBandNumber = 1;
 
 const $resultField = document.getElementById('result');
@@ -85,6 +86,7 @@ export const addColorsToList = () => {
   const numberOfColorsList = selectedBandNumber === 3 && fourthBandColor === 'none' ?
     4 : selectedBandNumber;
   const bandConstInfo = JSON.parse(JSON.stringify(bandsConstInfoList[numberOfColorsList - 1]));
+
   /*
    * Removing "none" color from colors list when third band is used as multiplier
    * because fourth band has "none" color
@@ -92,8 +94,9 @@ export const addColorsToList = () => {
   if ( selectedBandNumber === 3 && numberOfColorsList === 4) {
     bandConstInfo.colorsList.shift();
   }
+
   /*
-   * Removing all colors except "none" from colors  list for 6th band, 
+   * Removing all colors except "none" from colors list for 6th band, 
    * when 4th or 5th band has "none" color
    */
   if ( selectedBandNumber === 6 && (fourthBandColor === 'none' || fifthBandColor === 'none')) {
@@ -165,14 +168,17 @@ export const saveToLocalHost = () => {
   localStorage.setItem('result', result.value);
 };
 
+//Divide into 3 functions?
 export const changeUI = (action, bandNumber = selectedBandNumber, toBuildResult = true) => {
+  const newColor = currentBandsInfo[bandNumber - 1].color;
+  const newDescription = currentBandsInfo[bandNumber - 1].description;
+
   const $resistorBand = bandsConstInfoList[bandNumber - 1].$resistorBand;
   const $resistorBandMarker = $resistorBand.childNodes[1];
+
   const $bandsListElement = bandsConstInfoList[bandNumber - 1].$bandsListBand;
   const $bandsListElementMarker = $bandsListElement.childNodes[1];
   const $bandsListElementDescription = $bandsListElement.childNodes[3];
-  const newColor = currentBandsInfo[bandNumber - 1].color;
-  const newDescription = currentBandsInfo[bandNumber - 1].description;
 
   if ( !isNumber(bandNumber) && bandNumber > 6 ) {
     throw ' "selectedNumber" has wrong value! ';
