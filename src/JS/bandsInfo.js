@@ -2,7 +2,7 @@ export const result = {value: '82k&#x2126 5%'};
 export const currentBandsInfo = [
   { bandNumber: 1, color: 'grey', description: '8'},
   { bandNumber: 2, color: 'red', description: '2',},
-  { bandNumber: 3, color: 'orange', description: 'x 1 k'},
+  { bandNumber: 3, color: 'orange', description: 'x 1 k&#x2126'},
   { bandNumber: 4, color: 'none', description: ''},
   { bandNumber: 5, color: 'gold', description: ' 5%'},
   { bandNumber: 6, color: 'none', description: ''}
@@ -65,18 +65,18 @@ export const bandsConstInfoList = [
     $bandsListBand: document.getElementById('fourth-band-color'),
     colorsList: [
       {color: 'none', description: ''},
-      {color: 'black', description: 'x 1'},
-      {color: 'brown', description: 'x 10'},
-      {color: 'red', description: 'x 100'},
-      {color: 'orange', description: 'x 1 K'},
-      {color: 'yellow', description: 'x 10 K'},
-      {color: 'green', description: 'x 100 K'},
-      {color: 'blue', description: 'x 1 M'},
-      {color: 'violet', description: 'x 10 M'},
-      {color: 'grey', description: 'x 100 M'},
-      {color: 'white', description: 'x 1 G'},
-      {color: 'gold', description: 'x 0.1'},
-      {color: 'silver', description: 'x 0.01'}
+      {color: 'black', description: 'x 1 &#x2126'},
+      {color: 'brown', description: 'x 10 &#x2126'},
+      {color: 'red', description: 'x 100 &#x2126'},
+      {color: 'orange', description: 'x 1 K&#x2126'},
+      {color: 'yellow', description: 'x 10 K&#x2126'},
+      {color: 'green', description: 'x 100 K&#x2126'},
+      {color: 'blue', description: 'x 1 M&#x2126'},
+      {color: 'violet', description: 'x 10 M&#x2126'},
+      {color: 'grey', description: 'x 100 M&#x2126'},
+      {color: 'white', description: 'x 1 G&#x2126'},
+      {color: 'gold', description: 'x 0.1 &#x2126'},
+      {color: 'silver', description: 'x 0.01 &#x2126'}
     ]
   },
   {

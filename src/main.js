@@ -9,14 +9,12 @@ const $bandsList = document.getElementById('bands-list');
 const $colorsList = document.getElementById('colors-list');
 
 export const clearColorsList = () => {
-  let check = 0;
+  if ($colorsList.length > 13) {
+    throw '"while" loop gone out of color number limit';
+  }
   while ($colorsList.firstChild) {
-    check++;
     $colorsList.firstChild.removeEventListener('click', colorClickEvent.bind());
     $colorsList.removeChild($colorsList.firstChild);
-    if (check > 13) {
-      throw '"while" loop gone out of color number limit';
-    }
   }
   return true;
 };
@@ -33,44 +31,71 @@ export const createColorElement = (color, description) => {
   return $li;
 };
 
+/*
+ * In this event is holding cases when not selected bands must to change,
+ * when selected band is changed to specific color:
+ * 1) 3rd band uses as multiplier when 4th band has "none" color.
+ * In this case when 4th band changes color to "none" 3rd band
+ * changes to "black" color and uses multiplier(4th bands) color-list
+ * 2) 4th band must be "none" color when 5th band is "none" color
+ * 3) 6th band must be "none" color when 4th or 5th color is "none"
+ */
 const colorClickEvent = colorElementObj => {
   const currentColor = currentBandsInfo[selectedBandNumber - 1].color;
   const newColor = colorElementObj.color;
+  const newDescription = colorElementObj.description;
+  const thirdBandInfo = currentBandsInfo[2];
+  const fourthBandInfo = currentBandsInfo[3];
+  const sixthBandInfo = currentBandsInfo[5];
+
   if (currentColor !== newColor) {
-    const newDescription = colorElementObj.description;
     currentBandsInfo[selectedBandNumber - 1].color = newColor;
     currentBandsInfo[selectedBandNumber - 1].description = newDescription;
 
     if ( selectedBandNumber === 4 && currentColor === 'none'){
-      const thirdBandNumber = 3;
-      currentBandsInfo[thirdBandNumber - 1].color = 'black';
-      currentBandsInfo[thirdBandNumber - 1].description = '0';
-      changeUI('change band color', thirdBandNumber);
+      thirdBandInfo.color = 'black';
+      thirdBandInfo.description = '0';
+      changeUI('change band color', thirdBandInfo.bandNumber);
     } else if (  selectedBandNumber === 4 && newColor === 'none' ) {
-      const thirdBandNumber = 3;
-      currentBandsInfo[thirdBandNumber - 1].color = 'black';
-      currentBandsInfo[thirdBandNumber - 1].description = 'x 1';
-      changeUI('change band color', thirdBandNumber);
+      thirdBandInfo.color = 'black';
+      thirdBandInfo.description = 'x 1 &#x2126';
+      changeUI('change band color', thirdBandInfo.bandNumber);
+
+      sixthBandInfo.color = 'none';
+      sixthBandInfo.description = '';
+      changeUI('change band color', sixthBandInfo.bandNumber);
+    }
+
+    if (selectedBandNumber === 5 && newColor === 'none' ) {
+      sixthBandInfo.color = 'none';
+      sixthBandInfo.description = '';
+      changeUI('change band color', sixthBandInfo.bandNumber);
+
+      fourthBandInfo.color = 'none';
+      fourthBandInfo.description = '';
+      changeUI('change band color', fourthBandInfo.bandNumber);
     }
     changeUI('change band color');
   }
 };
 
-//can be divided to functions
-const addColorsToList = () => {
+export const addColorsToList = () => {
   const fourthBandColor = currentBandsInfo[3].color;
   const fifthBandColor = currentBandsInfo[4].color;
-  const numberOfList = selectedBandNumber === 3 && fourthBandColor === 'none' ?
+  const numberOfColorsList = selectedBandNumber === 3 && fourthBandColor === 'none' ?
     4 : selectedBandNumber;
-  const bandConstInfo = JSON.parse(JSON.stringify(bandsConstInfoList[numberOfList - 1]));
+  const bandConstInfo = JSON.parse(JSON.stringify(bandsConstInfoList[numberOfColorsList - 1]));
   /*
    * Removing "none" color from colors list when third band is used as multiplier
    * because fourth band has "none" color
    */
-  if ( selectedBandNumber === 3 && numberOfList === 4) {
+  if ( selectedBandNumber === 3 && numberOfColorsList === 4) {
     bandConstInfo.colorsList.shift();
   }
-
+  /*
+   * Removing all colors except "none" from colors  list for 6th band, 
+   * when 4th or 5th band has "none" color
+   */
   if ( selectedBandNumber === 6 && (fourthBandColor === 'none' || fifthBandColor === 'none')) {
     bandConstInfo.colorsList = bandConstInfo.colorsList.filter(
       colorObject => colorObject.color === 'none');
@@ -95,7 +120,7 @@ export const changeColor = ($element, color) => {
 
 export const moveMarker = ($marker, className) => {
   if (!isString(className)) {
-    throw 'Wrong input of parametr "class" ';
+    throw 'Wrong input of parametr "className" ';
   }
   if (className === 'resistor__band-marker' || className === 'bands-list__band-marker') {
     const [activeMarker] = document.getElementsByClassName(className + ' show-marker');
@@ -106,50 +131,41 @@ export const moveMarker = ($marker, className) => {
   }
 };
 
+export const getResult = () => {
+
+  const result = currentBandsInfo.reduce( (accumulator, bandInfo) => {
+    const bandNumber = bandInfo.bandNumber;
+    const fourthBandColor = currentBandsInfo[3].color;
+    let resultString = accumulator + bandInfo.description;
+
+    if ( currentBandsInfo.length > 6 ) {
+      throw '"currentBandsInfo" has more than 6 band objects';
+    }
+
+    if (bandNumber === 2) {
+      resultString = accumulator.description + bandInfo.description;
+    }
+
+    if ((bandNumber === 3 && fourthBandColor === 'none') ||
+        (bandNumber === 4 && fourthBandColor !== 'none')) {
+      const descriptionSplited = bandInfo.description.split(' ');
+      const digitNumber = parseInt(accumulator);
+      const multiplier = parseFloat(descriptionSplited[1]);
+      const units = descriptionSplited[2];
+      const fullNumber = (digitNumber * (multiplier * 100) / 100 ).toString();
+      resultString = fullNumber + units;
+    }
+    return resultString;
+  });
+  return result;
+};
+
 export const saveToLocalHost = () => {
   localStorage.setItem('currentBandsInfo', JSON.stringify(currentBandsInfo));
   localStorage.setItem('result', result.value);
 };
 
-export const getResult = () => {
-
-  const result = currentBandsInfo.reduce( (accumulator, bandInfo) => {
-    if ( currentBandsInfo.length > 6 ) {
-      throw '"currentBandsInfo" has more than 6 band objects';
-    }
-
-    const bandNumber = bandInfo.bandNumber;
-    const fourthBandIndex = 3;
-
-    if (bandNumber === 2) {
-      return accumulator.description + bandInfo.description;
-    }
-
-    if ((bandNumber === 3 && currentBandsInfo[fourthBandIndex].color === 'none') ||
-        (bandNumber === 4 && bandInfo.color !== 'none')) {
-      const descriptionSplited = bandInfo.description.split(' ');
-      const indexOfMultiplier = 1;
-      const indexOfUnits = 2;
-      const digitNumber = Number(accumulator);
-      const multiplier = parseFloat(descriptionSplited[indexOfMultiplier]);
-      const fullNumber = (digitNumber * (multiplier * 100) / 100 ).toString();
-      return descriptionSplited.length === 3 ?
-        fullNumber + descriptionSplited[indexOfUnits] + '&#x2126' :
-        fullNumber + '&#x2126';
-    }
-    return accumulator + bandInfo.description;
-  });
-  return result;
-
-};
-
 export const changeUI = (action, bandNumber = selectedBandNumber, toBuildResult = true) => {
-  if ( !isNumber(bandNumber) && bandNumber > 6 ) {
-    throw ' "selectedNumber" has wrong value! ';
-  }
-  if ( !isString(action) ) {
-    throw 'Wrong input of parametr "action" ';
-  }
   const $resistorBand = bandsConstInfoList[bandNumber - 1].$resistorBand;
   const $resistorBandMarker = $resistorBand.childNodes[1];
   const $bandsListElement = bandsConstInfoList[bandNumber - 1].$bandsListBand;
@@ -157,6 +173,13 @@ export const changeUI = (action, bandNumber = selectedBandNumber, toBuildResult 
   const $bandsListElementDescription = $bandsListElement.childNodes[3];
   const newColor = currentBandsInfo[bandNumber - 1].color;
   const newDescription = currentBandsInfo[bandNumber - 1].description;
+
+  if ( !isNumber(bandNumber) && bandNumber > 6 ) {
+    throw ' "selectedNumber" has wrong value! ';
+  }
+  if ( !isString(action) ) {
+    throw 'Wrong input of parametr "action" ';
+  }
 
   if (action === 'change colors-list') {
     clearColorsList();
