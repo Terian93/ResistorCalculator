@@ -53,30 +53,25 @@ const colorClickEvent = colorElementObj => {
     currentBandsInfo[selectedBandNumber - 1].color = newColor;
     currentBandsInfo[selectedBandNumber - 1].description = newDescription;
 
-    if ( selectedBandNumber === 4 && currentColor === 'none'){
+    if ( selectedBandNumber === 4 && newColor !== 'none'){
       thirdBandInfo.color = 'black';
       thirdBandInfo.description = '0';
-      changeUI('change band color', thirdBandInfo.bandNumber);
-    } else if (  selectedBandNumber === 4 && newColor === 'none' ) {
+      changeBandColor(thirdBandInfo.bandNumber);
+    } else if ( (selectedBandNumber === 4 || selectedBandNumber === 5) && newColor === 'none' ) {
       thirdBandInfo.color = 'black';
       thirdBandInfo.description = 'x 1 &#x2126';
-      changeUI('change band color', thirdBandInfo.bandNumber);
-
-      sixthBandInfo.color = 'none';
-      sixthBandInfo.description = '';
-      changeUI('change band color', sixthBandInfo.bandNumber);
-    }
-
-    if (selectedBandNumber === 5 && newColor === 'none' ) {
-      sixthBandInfo.color = 'none';
-      sixthBandInfo.description = '';
-      changeUI('change band color', sixthBandInfo.bandNumber);
+      changeBandColor(thirdBandInfo.bandNumber);
 
       fourthBandInfo.color = 'none';
       fourthBandInfo.description = '';
-      changeUI('change band color', fourthBandInfo.bandNumber);
+      changeBandColor(fourthBandInfo.bandNumber);
+
+      sixthBandInfo.color = 'none';
+      sixthBandInfo.description = '';
+      changeBandColor(sixthBandInfo.bandNumber);
     }
-    changeUI('change band color');
+
+    changeBandColor();
   }
 };
 
@@ -100,6 +95,14 @@ export const addColorsToList = () => {
    * when 4th or 5th band has "none" color
    */
   if ( selectedBandNumber === 6 && (fourthBandColor === 'none' || fifthBandColor === 'none')) {
+    bandConstInfo.colorsList = bandConstInfo.colorsList.filter(
+      colorObject => colorObject.color === 'none');
+  }
+  /*
+   * Removing all colors except "none" from colors list for 4th band, 
+   * when 5th band has "none" color
+   */
+  if ( selectedBandNumber === 4 && fifthBandColor === 'none') {
     bandConstInfo.colorsList = bandConstInfo.colorsList.filter(
       colorObject => colorObject.color === 'none');
   }
@@ -168,6 +171,51 @@ export const saveToLocalHost = () => {
   localStorage.setItem('result', result.value);
 };
 
+export const changeColorsList = (bandNumber = selectedBandNumber) => {
+  const $resistorBandMarker = bandsConstInfoList[bandNumber - 1].$resistorBand.childNodes[1];
+  const $bandsListElementMarker = bandsConstInfoList[bandNumber - 1].$bandsListBand.childNodes[1];
+
+  clearColorsList();
+  addColorsToList();
+  moveMarker($resistorBandMarker, 'resistor__band-marker');
+  moveMarker($bandsListElementMarker, 'bands-list__band-marker');
+};
+
+export const changeBandColor = (bandNumber = selectedBandNumber, toBuildResult = true) => {
+  const $resistorBand = bandsConstInfoList[bandNumber - 1].$resistorBand;
+  const $bandsListElement = bandsConstInfoList[bandNumber - 1].$bandsListBand;
+  const $bandsListElementDescription = $bandsListElement.childNodes[3];
+  const newColor = currentBandsInfo[bandNumber - 1].color;
+  const newDescription = currentBandsInfo[bandNumber - 1].description;
+
+  changeColor($resistorBand, newColor);
+  changeColor($bandsListElement, newColor);
+  $bandsListElementDescription.innerHTML = newDescription.replace(/ /g, '');
+  if (toBuildResult){
+    result.value = getResult();
+    $resultField.innerHTML = result.value;
+    saveToLocalHost();
+  }
+};
+
+export const initialize = () => {
+  const newBandsInfo = JSON.parse(localStorage.getItem('currentBandsInfo'));
+  if (!isNull(newBandsInfo)) {
+    result.value = localStorage.getItem('result');
+    newBandsInfo.forEach( bandInfo => {
+      const bandNumber = bandInfo.bandNumber;
+      const newColor = bandInfo.color;
+      const newDescription = bandInfo.description;
+
+      currentBandsInfo[bandNumber - 1].color = newColor;
+      currentBandsInfo[bandNumber - 1].description = newDescription;
+      changeBandColor(bandNumber, false);
+    });
+  }
+  $resultField.innerHTML = result.value;
+  changeColorsList(1);
+};
+
 //Divide into 3 functions?
 export const changeUI = (action, bandNumber = selectedBandNumber, toBuildResult = true) => {
   const newColor = currentBandsInfo[bandNumber - 1].color;
@@ -222,7 +270,7 @@ export const changeUI = (action, bandNumber = selectedBandNumber, toBuildResult 
   }
 };
 
-changeUI('initialize');
+initialize();
 
 window.onload = () => {
   $bandsList.addEventListener('click', event => {
@@ -234,7 +282,7 @@ window.onload = () => {
       ).bandNumber;
       if (newSelectedBandNumber !== selectedBandNumber) {
         selectedBandNumber = newSelectedBandNumber;
-        changeUI('change colors-list');
+        changeColorsList();
       }
     }
   });
