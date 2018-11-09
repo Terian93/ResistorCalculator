@@ -1,6 +1,8 @@
+import './style.scss';
 import {currentBandsInfo, bandsConstInfoList, result} from './JS/bandsInfo';
 import { isNumber, isString } from 'util';
 import { isNull } from 'util';
+
 
 //Use number 1-6 or decremented for arrays 0-5?
 let selectedBandNumber = 1;
