@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald');
 @font-face {
   font-family: 'Milestone';
   src: url('./assets/fonts/MilestoneFreeVersion-Script.otf');
@@ -19,6 +20,7 @@ li {
 body {
   height: 100%;
   margin: 0;
+  font-family: 'Oswald', sans-serif;
 }
 
 header,
