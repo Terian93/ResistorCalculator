@@ -35,8 +35,8 @@ Visit this :link:[allaboutcircuits](https://www.allaboutcircuits.com/textbook/re
 - [x] color-list builder
 - [x] Change band color function (on event) 
 - [x] Denomination result builder
-- [x] Save changes to cache (dev branch)
-- [x] Make refactoring of project (dev branch)
+- [x] Save changes to cache
+- [x] Make refactoring of project
 - [x] Add unit tests
 
 ### Feature that can be added:
