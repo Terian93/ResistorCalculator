@@ -1,9 +1,18 @@
-export const bandsInfo = [
+export const result = {value: '82k&#x2126 5%'};
+export const currentBandsInfo = [
+  { bandNumber: 1, color: 'grey', description: '8'},
+  { bandNumber: 2, color: 'red', description: '2',},
+  { bandNumber: 3, color: 'orange', description: 'x 1 k&#x2126'},
+  { bandNumber: 4, color: 'none', description: ''},
+  { bandNumber: 5, color: 'gold', description: ' 5%'},
+  { bandNumber: 6, color: 'none', description: ''}
+];
+export const bandsConstInfoList = [
   {
-    color: 'grey',
-    description: '8',
+    bandNumber: 1,
+    $resistorBand: document.getElementById('first-band'),
+    $bandsListBand: document.getElementById('first-band-color'),
     colorsList: [
-      {color: 'none', description: ''},
       {color: 'black', description: '0'},
       {color: 'brown', description: '1'},
       {color: 'red', description: '2'},
@@ -17,10 +26,10 @@ export const bandsInfo = [
     ]
   },
   {
-    color: 'red',
-    description: '2',
+    bandNumber: 2,
+    $resistorBand: document.getElementById('second-band'),
+    $bandsListBand: document.getElementById('second-band-color'),
     colorsList: [
-      {color: 'none', description: ''},
       {color: 'black', description: '0'},
       {color: 'brown', description: '1'},
       {color: 'red', description: '2'},
@@ -34,10 +43,10 @@ export const bandsInfo = [
     ]
   },
   {
-    color: 'orange',
-    description: 'x1k',
+    bandNumber: 3,
+    $resistorBand: document.getElementById('third-band'),
+    $bandsListBand: document.getElementById('third-band-color'),
     colorsList: [
-      {color: 'none', description: ''},
       {color: 'black', description: '0'},
       {color: 'brown', description: '1'},
       {color: 'red', description: '2'},
@@ -51,53 +60,56 @@ export const bandsInfo = [
     ]
   },
   {
-    color: 'none',
-    description: '',
+    bandNumber: 4,
+    $resistorBand: document.getElementById('fourth-band'),
+    $bandsListBand: document.getElementById('fourth-band-color'),
     colorsList: [
       {color: 'none', description: ''},
-      {color: 'black', description: 'x1'},
-      {color: 'brown', description: 'x10'},
-      {color: 'red', description: 'x100'},
-      {color: 'orange', description: 'x1K'},
-      {color: 'yellow', description: 'x10K'},
-      {color: 'green', description: 'x100K'},
-      {color: 'blue', description: 'x1M'},
-      {color: 'violet', description: 'x10M'},
-      {color: 'grey', description: 'x100M'},
-      {color: 'white', description: 'x1G'},
-      {color: 'gold', description: 'x0.1'},
-      {color: 'silver', description: 'x0.01'}
+      {color: 'black', description: 'x 1 &#x2126'},
+      {color: 'brown', description: 'x 10 &#x2126'},
+      {color: 'red', description: 'x 100 &#x2126'},
+      {color: 'orange', description: 'x 1 K&#x2126'},
+      {color: 'yellow', description: 'x 10 K&#x2126'},
+      {color: 'green', description: 'x 100 K&#x2126'},
+      {color: 'blue', description: 'x 1 M&#x2126'},
+      {color: 'violet', description: 'x 10 M&#x2126'},
+      {color: 'grey', description: 'x 100 M&#x2126'},
+      {color: 'white', description: 'x 1 G&#x2126'},
+      {color: 'gold', description: 'x 0.1 &#x2126'},
+      {color: 'silver', description: 'x 0.01 &#x2126'}
     ]
   },
   {
-    color: 'gold',
-    description: '5%',
+    bandNumber: 5,
+    $resistorBand: document.getElementById('fifth-band'),
+    $bandsListBand: document.getElementById('fifth-band-color'),
     colorsList: [
-      {color: 'none', description: '20%'},
-      {color: 'brown', description: '1%'},
-      {color: 'red', description: '2%'},
-      {color: 'green', description: '0.5%'},
-      {color: 'blue', description: '0.25%'},
-      {color: 'violet', description: '0.1%'},
-      {color: 'grey', description: '0.05%'},
-      {color: 'gold', description: '5%'},
-      {color: 'silver', description: '10%'}
+      {color: 'none', description: ' 20%'},
+      {color: 'brown', description: ' 1%'},
+      {color: 'red', description: ' 2%'},
+      {color: 'green', description: ' 0.5%'},
+      {color: 'blue', description: ' 0.25%'},
+      {color: 'violet', description: ' 0.1%'},
+      {color: 'grey', description: ' 0.05%'},
+      {color: 'gold', description: ' 5%'},
+      {color: 'silver', description: ' 10%'}
     ]
   },
   {
-    color: 'none',
-    description: '',
+    bandNumber: 6,
+    $resistorBand: document.getElementById('sixth-band'),
+    $bandsListBand: document.getElementById('sixth-band-color'),
     colorsList: [
       {color: 'none', description: ''},
-      {color: 'black', description: '250ppm/K'},
-      {color: 'brown', description: '100ppm/K'},
-      {color: 'red', description: '50ppm/K'},
-      {color: 'orange', description: '15ppm/K'},
-      {color: 'yellow', description: '25ppm/K'},
-      {color: 'green', description: '20ppm/K'},
-      {color: 'blue', description: '10ppm/K'},
-      {color: 'violet', description: '5ppm/K'},
-      {color: 'grey', description: '1ppm/K'}
+      {color: 'black', description: ' 250ppm/K'},
+      {color: 'brown', description: ' 100ppm/K'},
+      {color: 'red', description: ' 50ppm/K'},
+      {color: 'orange', description: ' 15ppm/K'},
+      {color: 'yellow', description: ' 25ppm/K'},
+      {color: 'green', description: ' 20ppm/K'},
+      {color: 'blue', description: ' 10ppm/K'},
+      {color: 'violet', description: ' 5ppm/K'},
+      {color: 'grey', description: ' 1ppm/K'}
     ]
   }
 ];

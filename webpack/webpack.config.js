@@ -1,8 +1,9 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+//const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: [
     './src/main.js'
   ],
@@ -19,7 +20,9 @@ module.exports = {
         include: [
           path.resolve(__dirname, '../js')
         ],
-        use: []
+        use: {
+          loader: 'babel-loader'
+        }
       },
       {
         test: /\.scss$/,
@@ -36,18 +39,18 @@ module.exports = {
             }
           },
           {
-            loader: 'sass-loader' // compiles Sass to CSS
+            loader: 'sass-loader', // compiles Sass to CSS
           }
         ]
       },
       {
         test: /\.(svg|png|jpg|jpeg|gif)$/,
-        use: {
+        use: [{
           loader: 'file-loader',
           options: {
-            outputPath: 'images/'
+            name: 'assets/img/[name].[ext]'
           }
-        }
+        }]
       },
       {
         test: /\.(woff(2)?|ttf|eot|otf)(\?v=\d+\.\d+\.\d+)?$/,
@@ -55,7 +58,7 @@ module.exports = {
           loader: 'file-loader',
           options: {
             name: '[name].[ext]',
-            outputPath: 'fonts/'
+            outputPath: 'assets/fonts/'
           }
         }]
       }
@@ -65,10 +68,5 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve('./src/index.html')
     }),
-  ],
-  devServer: {
-    contentBase: path.join(__dirname, '../src/'),
-    compress: true,
-    historyApiFallback: true
-  }
+  ]
 };
