@@ -47,6 +47,6 @@ Visit this :link:[allaboutcircuits](https://www.allaboutcircuits.com/textbook/re
     - [ ] Import resistors list
 
 ## Repository interaction guides/templates:notebook_with_decorative_cover::
-- [Contribution guide :suspect:]() (in progress) 
-- [Pull request template :godmode:]() (in progress)
-- [Issue template :hurtrealbad:]() (in progress)
+- [Contribution guide :suspect:](https://github.com/Terian93/ResistorCalculator/blob/master/CONTRIBUTING.md) 
+- [Pull request template :godmode:](https://github.com/Terian93/ResistorCalculator/blob/master/PULL_REQUEST_TEMPLATE.md)
+- [Issue template :hurtrealbad:](https://github.com/Terian93/ResistorCalculator/tree/master/.github/ISSUE_TEMPLATE)
