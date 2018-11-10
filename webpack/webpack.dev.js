@@ -7,7 +7,7 @@ module.exports = {
     './src/main.js'
   ],
   output: {
-    filename: 'bundle.js',
+    filename: 'main.js',
     path: path.resolve(__dirname, '../dist')
   },
   devtool: 'cheap-module-eval-source-map',
@@ -30,7 +30,7 @@ module.exports = {
           {
             loader: 'css-loader', // translates CSS into CommonJS
             query: {
-              modules: true,
+              modules: false,
               camelCase: true,
               localIdentName: '[name]__[local]___[hash:base64:5]'
             }
@@ -39,6 +39,25 @@ module.exports = {
             loader: 'sass-loader' // compiles Sass to CSS
           }
         ]
+      },
+      {
+        test: /\.(svg|png|jpg|jpeg|gif)$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            outputPath: 'images/'
+          }
+        }
+      },
+      {
+        test: /\.(woff(2)?|ttf|eot|otf)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [{
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'fonts/'
+          }
+        }]
       }
     ]
   },
@@ -48,7 +67,7 @@ module.exports = {
     }),
   ],
   devServer: {
-    contentBase: path.join(__dirname, '../'),
+    contentBase: path.join(__dirname, '../src/'),
     compress: true,
     historyApiFallback: true
   }

@@ -1,6 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+//const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   mode: 'production',
@@ -9,7 +9,7 @@ module.exports = {
   ],
   output: {
     filename: 'main.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, '../dist')
   },
   devtool: 'cheap-module-eval-source-map',
   module: {
@@ -33,7 +33,7 @@ module.exports = {
           {
             loader: 'css-loader', // translates CSS into CommonJS
             query: {
-              modules: true,
+              modules: false,
               camelCase: true,
               localIdentName: '[name]__[local]___[hash:base64:5]'
             }
@@ -68,5 +68,5 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve('./src/index.html')
     }),
-  ],
+  ]
 };

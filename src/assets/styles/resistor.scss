@@ -77,6 +77,7 @@
     position: relative;
     top: -17px;
     left: calc(50% - 10px);
+    content: url('./assets/img/arrow.svg');
     opacity: 0;
     transition: opacity .3s ease, top .3s ease;
 

@@ -93,7 +93,7 @@ export const addColorsToList = () => {
   }
 
   /*
-   * Removing all colors except "none" from colors list for 6th band, 
+   * Removing all colors except "none" from colors list for 6th band,
    * when 4th or 5th band has "none" color
    */
   if ( selectedBandNumber === 6 && (fourthBandColor === 'none' || fifthBandColor === 'none')) {
@@ -101,7 +101,7 @@ export const addColorsToList = () => {
       colorObject => colorObject.color === 'none');
   }
   /*
-   * Removing all colors except "none" from colors list for 4th band, 
+   * Removing all colors except "none" from colors list for 4th band,
    * when 5th band has "none" color
    */
   if ( selectedBandNumber === 4 && fifthBandColor === 'none') {
