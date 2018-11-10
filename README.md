@@ -22,7 +22,7 @@ Visit this :link:[allaboutcircuits](https://www.allaboutcircuits.com/textbook/re
 ### Mockup :pencil2::ledger:
 [wireframepro](https://wireframepro.mockflow.com/view/M4a2369d2f7b87c14994306dbfbbdcd0a1539283803750#/page/52e1c9b32fe44fd6b38ab48648ae21b6)
 ### Demo :hammer:
-[Github Pages]() (in progress)
+[Github Pages](https://terian93.github.io/ResistorCalculator/)
 
 ### Tech stack :factory:
 - javascript
@@ -37,7 +37,7 @@ Visit this :link:[allaboutcircuits](https://www.allaboutcircuits.com/textbook/re
 - [x] Denomination result builder
 - [x] Save changes to cache (dev branch)
 - [x] Make refactoring of project (dev branch)
-- [ ] Add unit tests
+- [x] Add unit tests
 
 ### Feature that can be added:
 - [ ] Page offline support
