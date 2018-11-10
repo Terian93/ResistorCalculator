@@ -228,6 +228,7 @@ const initialize = () => {
   $resultField.innerHTML = result.value;
   changeColorsList(1);
 };
+
 window.onload = () => {
   initialize();
   $bandsList.addEventListener('click', event => {
