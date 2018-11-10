@@ -41,6 +41,7 @@ Visit this :link:[allaboutcircuits](https://www.allaboutcircuits.com/textbook/re
 
 ### Feature that can be added:
 - [ ] Page offline support
+- [ ] Loading animation that hides page when it loads
 - [ ] Saved resistors list
     - [ ] Export resistors list
     - [ ] Import resistors list

@@ -1,7 +1,13 @@
 import './style.scss';
-import {currentBandsInfo, bandsConstInfoList, result} from './JS/bandsInfo';
-import { isNumber, isString } from 'util';
-import { isNull } from 'util';
+import {
+  currentBandsInfo, 
+  bandsConstInfoList, 
+  result
+} from './JS/bandsInfo';
+import { 
+  isString, 
+  isNull 
+} from 'util';
 
 
 //Use number 1-6 or decremented for arrays 0-5?
@@ -11,8 +17,8 @@ const $resultField = document.getElementById('result');
 const $bandsList = document.getElementById('bands-list');
 const $colorsList = document.getElementById('colors-list');
 
-export const clearColorsList = () => {
-  if ($colorsList.length > 13) {
+export const clearColorsList = $colorsList => {
+  if (($colorsList.childNodes).length > 13) {
     throw '"while" loop gone out of color number limit';
   }
   while ($colorsList.firstChild) {
@@ -77,18 +83,21 @@ const colorClickEvent = colorElementObj => {
   }
 };
 
-export const addColorsToList = () => {
+export const addColorsToList = (
+  bandNumber = selectedBandNumber, 
+  testingFunction = false
+) => {
   const fourthBandColor = currentBandsInfo[3].color;
   const fifthBandColor = currentBandsInfo[4].color;
-  const numberOfColorsList = selectedBandNumber === 3 && fourthBandColor === 'none' ?
-    4 : selectedBandNumber;
+  const numberOfColorsList = bandNumber === 3 && fourthBandColor === 'none' ?
+    4 : bandNumber;
   const bandConstInfo = JSON.parse(JSON.stringify(bandsConstInfoList[numberOfColorsList - 1]));
 
   /*
    * Removing "none" color from colors list when third band is used as multiplier
    * because fourth band has "none" color
    */
-  if ( selectedBandNumber === 3 && numberOfColorsList === 4) {
+  if ( bandNumber === 3 && numberOfColorsList === 4) {
     bandConstInfo.colorsList.shift();
   }
 
@@ -96,7 +105,7 @@ export const addColorsToList = () => {
    * Removing all colors except "none" from colors list for 6th band,
    * when 4th or 5th band has "none" color
    */
-  if ( selectedBandNumber === 6 && (fourthBandColor === 'none' || fifthBandColor === 'none')) {
+  if ( bandNumber === 6 && (fourthBandColor === 'none' || fifthBandColor === 'none')) {
     bandConstInfo.colorsList = bandConstInfo.colorsList.filter(
       colorObject => colorObject.color === 'none');
   }
@@ -104,18 +113,20 @@ export const addColorsToList = () => {
    * Removing all colors except "none" from colors list for 4th band,
    * when 5th band has "none" color
    */
-  if ( selectedBandNumber === 4 && fifthBandColor === 'none') {
+  if ( bandNumber === 4 && fifthBandColor === 'none') {
     bandConstInfo.colorsList = bandConstInfo.colorsList.filter(
       colorObject => colorObject.color === 'none');
   }
 
-  bandConstInfo.colorsList.forEach( colorElementObj => {
-    const $colorElement = createColorElement(colorElementObj.color, colorElementObj.description);
-    $colorsList.appendChild($colorElement);
-    const $colorBtn = document.getElementById(`color-${colorElementObj.color}`);
-    $colorBtn.addEventListener('click', colorClickEvent.bind(event, colorElementObj));
-
-  });
+  if (!testingFunction) {
+    bandConstInfo.colorsList.forEach( colorElementObj => {
+      const $colorElement = createColorElement(colorElementObj.color, colorElementObj.description);
+      $colorsList.appendChild($colorElement);
+      const $colorBtn = document.getElementById(`color-${colorElementObj.color}`);
+      $colorBtn.addEventListener('click', colorClickEvent.bind(event, colorElementObj));
+    });
+  }
+  return bandConstInfo.colorsList;
 };
 
 export const changeColor = ($element, color) => {
@@ -173,17 +184,17 @@ export const saveToLocalHost = () => {
   localStorage.setItem('result', result.value);
 };
 
-export const changeColorsList = (bandNumber = selectedBandNumber) => {
+const changeColorsList = (bandNumber = selectedBandNumber) => {
   const $resistorBandMarker = bandsConstInfoList[bandNumber - 1].$resistorBand.childNodes[1];
   const $bandsListElementMarker = bandsConstInfoList[bandNumber - 1].$bandsListBand.childNodes[1];
 
-  clearColorsList();
+  clearColorsList($colorsList);
   addColorsToList();
   moveMarker($resistorBandMarker, 'resistor__band-marker');
   moveMarker($bandsListElementMarker, 'bands-list__band-marker');
 };
 
-export const changeBandColor = (bandNumber = selectedBandNumber, toBuildResult = true) => {
+const changeBandColor = (bandNumber = selectedBandNumber, toBuildResult = true) => {
   const $resistorBand = bandsConstInfoList[bandNumber - 1].$resistorBand;
   const $bandsListElement = bandsConstInfoList[bandNumber - 1].$bandsListBand;
   const $bandsListElementDescription = $bandsListElement.childNodes[3];
@@ -200,7 +211,7 @@ export const changeBandColor = (bandNumber = selectedBandNumber, toBuildResult =
   }
 };
 
-export const initialize = () => {
+const initialize = () => {
   const newBandsInfo = JSON.parse(localStorage.getItem('currentBandsInfo'));
   if (!isNull(newBandsInfo)) {
     result.value = localStorage.getItem('result');
@@ -217,64 +228,8 @@ export const initialize = () => {
   $resultField.innerHTML = result.value;
   changeColorsList(1);
 };
-
-//Divide into 3 functions?
-export const changeUI = (action, bandNumber = selectedBandNumber, toBuildResult = true) => {
-  const newColor = currentBandsInfo[bandNumber - 1].color;
-  const newDescription = currentBandsInfo[bandNumber - 1].description;
-
-  const $resistorBand = bandsConstInfoList[bandNumber - 1].$resistorBand;
-  const $resistorBandMarker = $resistorBand.childNodes[1];
-
-  const $bandsListElement = bandsConstInfoList[bandNumber - 1].$bandsListBand;
-  const $bandsListElementMarker = $bandsListElement.childNodes[1];
-  const $bandsListElementDescription = $bandsListElement.childNodes[3];
-
-  if ( !isNumber(bandNumber) && bandNumber > 6 ) {
-    throw ' "selectedNumber" has wrong value! ';
-  }
-  if ( !isString(action) ) {
-    throw 'Wrong input of parametr "action" ';
-  }
-
-  if (action === 'change colors-list') {
-    clearColorsList();
-    addColorsToList();
-    moveMarker($resistorBandMarker, 'resistor__band-marker');
-    moveMarker($bandsListElementMarker, 'bands-list__band-marker');
-  } else if (action === 'change band color') {
-    changeColor($resistorBand, newColor);
-    changeColor($bandsListElement, newColor);
-    $bandsListElementDescription.innerHTML = newDescription.replace(/ /g, '');
-    if (toBuildResult){
-      result.value = getResult();
-      $resultField.innerHTML = result.value;
-      saveToLocalHost();
-    }
-  } else if (action === 'initialize') {
-    const newBandsInfo = JSON.parse(localStorage.getItem('currentBandsInfo'));
-    if (!isNull(newBandsInfo)) {
-      result.value = localStorage.getItem('result');
-      newBandsInfo.forEach( bandInfo => {
-        const bandNumber = bandInfo.bandNumber;
-        const newColor = bandInfo.color;
-        const newDescription = bandInfo.description;
-
-        currentBandsInfo[bandNumber - 1].color = newColor;
-        currentBandsInfo[bandNumber - 1].description = newDescription;
-        changeUI('change band color', bandNumber, false);
-      });
-    }
-    $resultField.innerHTML = result.value;
-    changeUI('change colors-list', 1);
-  } else {
-    throw 'Unknown action entered';
-  }
-};
-
-initialize();
-
 window.onload = () => {
+  initialize();
   $bandsList.addEventListener('click', event => {
     const {target} = event;
     const isBandBtn = target.classList.contains('bands-list__band-btn');
