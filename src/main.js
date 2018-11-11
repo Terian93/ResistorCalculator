@@ -65,19 +65,29 @@ const colorClickEvent = colorElementObj => {
       thirdBandInfo.color = 'black';
       thirdBandInfo.description = '0';
       changeBandColor(thirdBandInfo.bandNumber);
-    } else if ( (selectedBandNumber === 4 || selectedBandNumber === 5) && newColor === 'none' ) {
+    } else if (selectedBandNumber === 4 && newColor === 'none') {
       thirdBandInfo.color = 'black';
       thirdBandInfo.description = 'x 1 &#x2126';
       changeBandColor(thirdBandInfo.bandNumber);
 
-      fourthBandInfo.color = 'none';
-      fourthBandInfo.description = '';
-      changeBandColor(fourthBandInfo.bandNumber);
+      sixthBandInfo.color = 'none';
+      sixthBandInfo.description = '';
+      changeBandColor(sixthBandInfo.bandNumber);
+    } else if (selectedBandNumber === 5 && newColor === 'none' ) {
+      if (fourthBandInfo.color !== 'none') {
+        thirdBandInfo.color = 'black';
+        thirdBandInfo.description = 'x 1 &#x2126';
+        changeBandColor(thirdBandInfo.bandNumber);
+
+        fourthBandInfo.color = 'none';
+        fourthBandInfo.description = '';
+        changeBandColor(fourthBandInfo.bandNumber);
+      }
 
       sixthBandInfo.color = 'none';
       sixthBandInfo.description = '';
       changeBandColor(sixthBandInfo.bandNumber);
-    }
+    } 
 
     changeBandColor();
   }

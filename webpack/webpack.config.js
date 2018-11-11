@@ -1,6 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-//const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   mode: 'production',
@@ -68,5 +68,11 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve('./src/index.html')
     }),
+    new CopyWebpackPlugin([
+      {
+        from: './src/assets/img',
+        to: './assets/img'
+      },
+    ])
   ]
 };
