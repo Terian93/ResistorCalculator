@@ -73,7 +73,7 @@ const colorClickEvent = colorElementObj => {
     currentBandsInfo[selectedBandNumber - 1].color = newColor;
     currentBandsInfo[selectedBandNumber - 1].description = newDescription;
 
-    if ( selectedBandNumber === 4 && newColor !== 'none'){
+    if ( selectedBandNumber === 4 && currentColor === 'none'){
       thirdBandInfo.color = 'black';
       thirdBandInfo.description = '0';
       changeBandColor(thirdBandInfo.bandNumber);

@@ -16,9 +16,13 @@
   %band {
     width: 24px;
     position: relative;
-
     &.none {
       background-color: none;
+    }
+
+    &.white {
+      border-top: 1px solid black;
+      border-bottom: 1px solid black;
     }
   }
 

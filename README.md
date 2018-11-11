@@ -3,7 +3,7 @@
 * Course curator - [Andrii Zhyluk](https://github.com/veliohart)
 * Front-camp - [facebook](https://www.facebook.com/groups/270300106928894)
 
-## Resistor Calculator (WIP) :wrench: [![Build Status](https://travis-ci.com/Terian93/ResistorCalculator.svg?branch=master)](https://travis-ci.com/Terian93/ResistorCalculator)
+## Resistor Calculator :wrench: [![Build Status](https://travis-ci.com/Terian93/ResistorCalculator.svg?branch=master)](https://travis-ci.com/Terian93/ResistorCalculator)
 
 Calculator of denomination  for 3, 4, 5 and 6 band resistor
 ### How to use:question::
