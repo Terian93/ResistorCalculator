@@ -62,7 +62,7 @@
       "src"
     ],
     "moduleNameMapper": {
-      "\\.(css|less|scss)$": "identity-obj-proxy"
+      "\\.(css|less|scss|ico)$": "identity-obj-proxy"
     }
   },
   "husky": {
