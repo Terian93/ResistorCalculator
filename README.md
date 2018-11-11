@@ -50,3 +50,8 @@ Visit this :link:[allaboutcircuits](https://www.allaboutcircuits.com/textbook/re
 - [Contribution guide :suspect:]() (in progress) 
 - [Pull request template :godmode:]() (in progress)
 - [Issue template :hurtrealbad:]() (in progress)
+
+## Free stuff used in this project
+> ![Resistor Icon](https://image.flaticon.com/icons/png/128/675/675824.png)
+      
+This icon made by [Freepik](https://www.freepik.com) from [www.flaticon.com](https://www.flaticon.com/) is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/)
