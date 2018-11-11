@@ -1,6 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
   mode: 'production',
@@ -48,7 +48,8 @@ module.exports = {
         use: [{
           loader: 'file-loader',
           options: {
-            name: 'assets/img/[name].[ext]'
+            name: '[name].[ext]',
+            outputPath: 'assets/img/'
           }
         }]
       },
@@ -68,11 +69,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve('./src/index.html')
     }),
-    new CopyWebpackPlugin([
-      {
-        from: './src/assets/img',
-        to: './assets/img'
-      },
-    ])
+    new WorkboxPlugin.GenerateSW({
+      clientsClaim: true,
+      skipWaiting: true
+    })
   ]
 };

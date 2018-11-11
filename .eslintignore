@@ -1,2 +1,3 @@
 node_modules
 stylelint.config.js
+serviceworker-cache-polyfill.js
