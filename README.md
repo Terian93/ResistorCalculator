@@ -35,21 +35,21 @@ Visit this :link:[allaboutcircuits](https://www.allaboutcircuits.com/textbook/re
 - [x] color-list builder
 - [x] Change band color function (on event) 
 - [x] Denomination result builder
-- [x] Save changes to cache (dev branch)
-- [x] Make refactoring of project (dev branch)
+- [x] Save changes to cache
+- [x] Make refactoring of project
 - [x] Add unit tests
 
 ### Feature that can be added:
-- [ ] Page offline support
+- [x] Page offline support
 - [ ] Loading animation that hides page when it loads
 - [ ] Saved resistors list
     - [ ] Export resistors list
     - [ ] Import resistors list
 
 ## Repository interaction guides/templates:notebook_with_decorative_cover::
-- [Contribution guide :suspect:]() (in progress) 
-- [Pull request template :godmode:]() (in progress)
-- [Issue template :hurtrealbad:]() (in progress)
+- [Contribution guide :suspect:](https://github.com/Terian93/ResistorCalculator/blob/master/CONTRIBUTING.md) 
+- [Pull request template :godmode:](https://github.com/Terian93/ResistorCalculator/blob/master/PULL_REQUEST_TEMPLATE.md)
+- [Issue template :hurtrealbad:](https://github.com/Terian93/ResistorCalculator/tree/master/.github/ISSUE_TEMPLATE)
 
 ## Free stuff used in this project
 > ![Resistor Icon](https://image.flaticon.com/icons/png/128/675/675824.png)
