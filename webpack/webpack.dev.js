@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -41,11 +42,12 @@ module.exports = {
         ]
       },
       {
-        test: /\.(svg|png|jpg|jpeg|gif)$/,
+        test: /\.(svg|png|jpg|jpeg|gif|ico)$/,
         use: {
           loader: 'file-loader',
           options: {
-            outputPath: 'images/'
+            name: '[name].[ext]',
+            outputPath: 'assets/img/'
           }
         }
       },
@@ -55,7 +57,7 @@ module.exports = {
           loader: 'file-loader',
           options: {
             name: '[name].[ext]',
-            outputPath: 'fonts/'
+            outputPath: 'assets/fonts/'
           }
         }]
       }
@@ -65,6 +67,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve('./src/index.html')
     }),
+    new WorkboxPlugin.GenerateSW({
+      clientsClaim: true,
+      skipWaiting: true
+    })
   ],
   devServer: {
     contentBase: path.join(__dirname, '../src/'),

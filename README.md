@@ -40,7 +40,7 @@ Visit this :link:[allaboutcircuits](https://www.allaboutcircuits.com/textbook/re
 - [x] Add unit tests
 
 ### Feature that can be added:
-- [ ] Page offline support
+- [x] Page offline support
 - [ ] Loading animation that hides page when it loads
 - [ ] Saved resistors list
     - [ ] Export resistors list
@@ -50,3 +50,8 @@ Visit this :link:[allaboutcircuits](https://www.allaboutcircuits.com/textbook/re
 - [Contribution guide :suspect:](https://github.com/Terian93/ResistorCalculator/blob/master/CONTRIBUTING.md) 
 - [Pull request template :godmode:](https://github.com/Terian93/ResistorCalculator/blob/master/PULL_REQUEST_TEMPLATE.md)
 - [Issue template :hurtrealbad:](https://github.com/Terian93/ResistorCalculator/tree/master/.github/ISSUE_TEMPLATE)
+
+## Free stuff used in this project
+> ![Resistor Icon](https://image.flaticon.com/icons/png/128/675/675824.png)
+      
+This icon made by [Freepik](https://www.freepik.com) from [www.flaticon.com](https://www.flaticon.com/) is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/)
