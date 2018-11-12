@@ -2,7 +2,7 @@ export const result = {value: '82k&#x2126 5%'};
 export const currentBandsInfo = [
   { bandNumber: 1, color: 'grey', description: '8'},
   { bandNumber: 2, color: 'red', description: '2',},
-  { bandNumber: 3, color: 'orange', description: 'x 1 k&#x2126'},
+  { bandNumber: 3, color: 'black', description: 'x 1 k&#x2126'},
   { bandNumber: 4, color: 'none', description: ''},
   { bandNumber: 5, color: 'gold', description: ' 5%'},
   { bandNumber: 6, color: 'none', description: ''}
