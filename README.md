@@ -41,7 +41,7 @@ Visit this :link:[allaboutcircuits](https://www.allaboutcircuits.com/textbook/re
 
 ### Feature that can be added:
 - [x] Page offline support
-- [ ] Loading animation that hides page when it loads
+- [x] Loading animation that hides main tag when it loads
 - [ ] Saved resistors list
     - [ ] Export resistors list
     - [ ] Import resistors list
@@ -55,3 +55,5 @@ Visit this :link:[allaboutcircuits](https://www.allaboutcircuits.com/textbook/re
 > ![Resistor Icon](https://image.flaticon.com/icons/png/128/675/675824.png)
       
 This icon made by [Freepik](https://www.freepik.com) from [www.flaticon.com](https://www.flaticon.com/) is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/)
+
+Thanks to [Mateusz Niziołek](https://codepen.io/niziou/) from https://icons8.com for loading screen animation
