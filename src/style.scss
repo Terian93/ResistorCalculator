@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Oswald');
+
 @font-face {
   font-family: 'Milestone';
   src: url('./assets/fonts/MilestoneFreeVersion-Script.otf');
@@ -6,26 +7,31 @@
 
 ::-webkit-scrollbar {
   width: 14px;
-  height: 18px;
+  height: 14px;
 }
-::-webkit-scrollbar-thumb {
-  height: 6px;
-  border: 4px solid rgba(0, 0, 0, 0);
-  background-clip: padding-box;
-  border-radius: 7px;
-  background-color: rgba(0, 0, 0, 0.15);
-  box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.05), inset 1px 1px 0px rgba(0, 0, 0, 0.05);
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.25);
-  }
-}
+
 ::-webkit-scrollbar-button {
   width: 0;
   height: 0;
   display: none;
 }
+
 ::-webkit-scrollbar-corner {
   background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  height: 6px;
+  width: 6px;
+  border: 4px solid rgba(0, 0, 0, 0);
+  background-clip: padding-box;
+  border-radius: 7px;
+  background-color: rgba(0, 0, 0, 0.15);
+  box-shadow: inset -1px -1px 0 rgba(0, 0, 0, 0.05), inset 1px 1px 0 rgba(0, 0, 0, 0.05);
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.25);
+  }
 }
 
 * {
@@ -63,7 +69,8 @@ header {
 }
 
 main {
-  display: flex;
+  display: hide;
+  position: relative;
   flex-direction: column;
   justify-content: flex-start;
   height: calc(100vh - 77px);
@@ -144,6 +151,7 @@ main {
 }
 
 //main
+@import "./assets/styles/loading.scss";
 @import "./assets/styles/resistor.scss";
 @import "./assets/styles/bands-list.scss";
 @import "./assets/styles/colors-list.scss";

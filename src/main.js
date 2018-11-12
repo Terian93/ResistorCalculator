@@ -12,13 +12,13 @@ if ('serviceWorker' in navigator) {
 }
 
 import {
-  currentBandsInfo, 
-  bandsConstInfoList, 
+  currentBandsInfo,
+  bandsConstInfoList,
   result
 } from './JS/bandsInfo';
-import { 
-  isString, 
-  isNull 
+import {
+  isString,
+  isNull
 } from 'util';
 
 
@@ -99,14 +99,14 @@ const colorClickEvent = colorElementObj => {
       sixthBandInfo.color = 'none';
       sixthBandInfo.description = '';
       changeBandColor(sixthBandInfo.bandNumber);
-    } 
+    }
 
     changeBandColor();
   }
 };
 
 export const addColorsToList = (
-  bandNumber = selectedBandNumber, 
+  bandNumber = selectedBandNumber,
   testingFunction = false
 ) => {
   const fourthBandColor = currentBandsInfo[3].color;
@@ -234,6 +234,7 @@ const changeBandColor = (bandNumber = selectedBandNumber, toBuildResult = true) 
 };
 
 const initialize = () => {
+  const loadingScreen = document.getElementById('loadScreen');
   const newBandsInfo = JSON.parse(localStorage.getItem('currentBandsInfo'));
   if (!isNull(newBandsInfo)) {
     result.value = localStorage.getItem('result');
@@ -249,6 +250,11 @@ const initialize = () => {
   }
   $resultField.innerHTML = result.value;
   changeColorsList(1);
+  const time = 2000;
+  const timeout = setTimeout( () => {
+    loadingScreen.classList.add('hide');
+    clearTimeout(timeout);
+  }, time);
 };
 
 window.onload = () => {
