@@ -69,8 +69,7 @@ header {
 }
 
 main {
-  display: hide;
-  position: relative;
+  display: flex;
   flex-direction: column;
   justify-content: flex-start;
   height: calc(100vh - 77px);
@@ -148,6 +147,7 @@ main {
   text-align: center;
   font-size: 55px;
   font-weight: 400;
+  user-select: none;
 }
 
 //main

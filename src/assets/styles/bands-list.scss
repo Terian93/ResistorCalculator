@@ -3,10 +3,12 @@
   justify-content: center;
   height: 50px;
   margin: 20px 0 30px;
+  user-select: none;
 
   &__title {
     margin: 20px auto 0;
     text-align: center;
+    user-select: none;
   }
 
   &__band-btn {
@@ -74,6 +76,10 @@
 
     &__title {
       margin-top: 5px;
+    }
+
+    &__band-btn:hover &__band-marker {
+      opacity: 0;
     }
   }
 }
