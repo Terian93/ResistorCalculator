@@ -234,7 +234,8 @@ const changeBandColor = (bandNumber = selectedBandNumber, toBuildResult = true) 
 };
 
 const initialize = () => {
-  const loadingScreen = document.getElementById('loadScreen');
+  const $loadingScreen = document.getElementById('loadScreen');
+  const $main = document.getElementById('main');
   const newBandsInfo = JSON.parse(localStorage.getItem('currentBandsInfo'));
   if (!isNull(newBandsInfo)) {
     result.value = localStorage.getItem('result');
@@ -252,7 +253,8 @@ const initialize = () => {
   changeColorsList(1);
   const time = 2000;
   const timeout = setTimeout( () => {
-    loadingScreen.classList.add('hide');
+    $loadingScreen.classList.add('hide');
+    $main.classList.add('show');
     clearTimeout(timeout);
   }, time);
 };

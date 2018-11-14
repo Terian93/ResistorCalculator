@@ -1,6 +1,6 @@
 .loadScreen {
   display: block;
-  height: 100% !important;
+  height: calc(100% - 77px) !important;
   width: 100% !important;
   margin-top: 77px;
   position: absolute;
@@ -14,6 +14,7 @@
 }
 @media screen and (max-width: 760px) {
   .loadScreen {
+    height: calc(100% - 40px) !important;
     margin-top: 40px;
   }
 }

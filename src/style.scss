@@ -181,7 +181,13 @@ main {
   }
 
   main {
-    height: auto;
+    height: 0;
+    overflow: hidden;
+
+    &.show {
+      height: auto;
+      overflow: auto;
+    }
   }
 
   .header-title {
